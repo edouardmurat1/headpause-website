@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { NinjaService } from '../ninja.service';
-import { Ninja, Attack } from '../ninja';
+import { GlobalService } from '../global.service';
+import { NinjaService, Ninja, Action } from '../ninja.service';
+import { EnemyAI } from './enemyai';
 
 @Component({
   selector: 'app-fight',
@@ -12,115 +13,189 @@ import { Ninja, Attack } from '../ninja';
 })
 export class FightComponent implements OnInit {
 
-  enum State {
-    PlayerTurn,
-    EnemyTurn,
-    ChoiceTurn
-  };
-
-  state: State;
-
   title: string;
 
   playerNinja: Ninja;
   opponentNinja: Ninja;
 
-  playerChoice: any;
-  enemyChoice: any;
+  enemyAI: EnemyAI;
+
+  isPlayerAttackActive: boolean;
+  isPlayerDefenceActive: boolean;
+  isPlayerSpecialActive: boolean;
+
+  isDecisionActive: boolean;
+  playerChoice: string;
+  opponentChoice: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
-    private ninjaService: NinjaService) { }
+    private ninjaService: NinjaService,
+    private globalService: GlobalService) {
+      globalService.backgroundImage = "url(../assets/fight-background.jpg)";
+    }
 
   ngOnInit() {
     const playerid = +this.route.snapshot.paramMap.get('playerid');
     const opponentid = +this.route.snapshot.paramMap.get('opponentid');
     this.playerNinja = this.ninjaService.getNinja(playerid);
     this.opponentNinja = this.ninjaService.getNinja(opponentid);
+    this.enemyAI = new EnemyAI(this.opponentNinja, this.playerNinja);
 
-    this.state = State.PlayerTurn;
+    this.turn("player");
   }
 
-  stateMachine() {
-    if state == State.PlayerTurn {
-      this.title == "Your turn"
+  turn(turn: string) {
+    if(turn == "player") {
+      this.playerTurn();
     }
-    else if state == State.EnemyTurn {
-      this.title = "Opponent's turn"
+    else if(turn == "opponent") {
+      this.opponentTurn();
     }
-    else if state == State.ChoiceTurn {
-
+    else if(turn == "decision") {
+      this.decisionTurn();
     }
   }
 
-  turnOfPlayer() {
-    this.title = "It's your turn"
-    this.state
-    this.isPlayerTurn = true;
+  playerTurn() {
+    this.title = "Your turn";
+
+    let chakra = this.playerNinja.chakra.now;
+    let chakraForAttack = this.playerNinja.attack.chakra;
+    let chakraForDefence = this.playerNinja.defence.chakra;
+    let chakraForSpecial = this.playerNinja.special.chakra;
+
+    this.isPlayerAttackActive = (chakra >= chakraForAttack)? true : false;
+    this.isPlayerDefenceActive = (chakra >= chakraForDefence)? true : false;
+    this.isPlayerSpecialActive = (chakra >= chakraForSpecial)? true : false;
+
+    this.isDecisionActive = false;
   }
 
-  turnOfOpponent() {
-    this.title = "Your opponent is playing"
-    this.isPlayerTurn = false;
-    setTimeout(() => {
-      this.opponentAI();
+  opponentTurn() {
+    this.title = "Opponent's turn";
+
+    this.isPlayerAttackActive = false;
+    this.isPlayerDefenceActive = false;
+    this.isPlayerSpecialActive = false;
+
+    setTimeout(() =>
+      var nextAction = this.enemyAI.nextMove();
+      this.opponentPlays(nextAction.type);
     }, 2000)
   }
 
-  turnOfChoice() {
-    this.title = "Result of actions is:"
-    this.
-  }
+  decisionTurn() {
+    this.title = "Result of this turn";
 
-  opponentAI() {
-    var i = Math.floor(Math.random() * 3) + 1;
+    this.isPlayerAttackActive = false;
+    this.isPlayerDefenceActive = false;
+    this.isPlayerSpecialActive = false;
 
-    let element: HTMLElement
-    if(i === 1) {
-      element = document.getElementById('opponentAttackButton') as HTMLElement;
+    this.isDecisionActive = true;
+
+    //remove chakra from Player Action
+    let chakraSpentByPlayer = 0;
+    if(this.playerChoice == "attack") {
+      chakraSpentByPlayer += this.playerNinja.attack.chakra;
+    } else if(this.playerChoice == "defence") {
+      chakraSpentByPlayer += this.playerNinja.defence.chakra;
+    } else if(this.playerChoice == "special") {
+      chakraSpentByPlayer += this.playerNinja.special.chakra;
     }
-    else if(i === 2) {
-      element = document.getElementById('opponentDefenceButton') as HTMLElement;
-    }
-    else if(i === 3) {
-      element = document.getElementById('opponentSpecialButton') as HTMLElement;
-    }
-    element.click()
-  }
+    this.playerNinja.chakra.remove(chakraSpentByPlayer);
 
-  playerPlays(type: string) {
-    if(type == "attack") {
-      this.opponentNinja.health -= this.playerNinja.attack.damage
+    //remove chakra from Opponent Action
+    let chakraSpentByOpponent = 0;
+    if(this.opponentChoice == "attack") {
+      chakraSpentByOpponent += this.opponentNinja.attack.chakra;
+    } else if(this.opponentChoice == "defence") {
+      chakraSpentByOpponent += this.opponentNinja.defence.chakra;
+    } else if(this.opponentChoice == "special") {
+      chakraSpentByOpponent += this.opponentNinja.special.chakra;
+    }
+    this.opponentNinja.chakra.remove(chakraSpentByOpponent);
+
+    //What is the result of this turn?
+    // defence > attack > special > defence
+    if(this.playerChoice == "attack") {
+      if(this.opponentChoice == "attack") {
+        this.playerNinja.health.remove(this.opponentNinja.attack.damage);
+        this.opponentNinja.health.remove(this.playerNinja.attack.damage);
+      } else if(this.opponentChoice == "defence") {
+        //nothing happens
+      } else if(this.opponentChoice == "special") {
+        this.opponentNinja.health.remove(this.playerNinja.attack.damage);
+      }
+    } else if(this.playerChoice == "defence") {
+      if(this.opponentChoice == "attack") {
+        //nothing happens
+      } else if(this.opponentChoice == "defence") {
+        //nothing happens
+      } else if(this.opponentChoice == "special") {
+        this.playerNinja.health.remove(this.opponentNinja.special.damage);
+      }
+    } else if(this.playerChoice == "special") {
+      if(this.opponentChoice == "attack") {
+        this.playerNinja.health.remove(this.opponentNinja.attack.damage);
+      } else if(this.opponentChoice == "defence") {
+        this.opponentNinja.health.remove(this.playerNinja.special.damage);
+      } else if(this.opponentChoice == "special") {
+        this.playerNinja.health.remove(this.opponentNinja.special.damage);
+        this.opponentNinja.health.remove(this.playerNinja.special.damage);
+      }
     }
 
-    if (this.opponentNinja.health < 0) {
-      this.opponentDies();
-      return;
-    }
+    let isPlayerDead = (this.playerNinja.health.now <= 0 || this.playerNinja.chakra.now <= 0);
+    let isOpponentDead = (this.opponentNinja.health.now <= 0 || this.opponentNinja.chakra.now <= 0);
 
-    this.turnOfOpponent();
-  }
-
-  opponentPlays(type: string) {
-    if(type == "attack") {
-      this.playerNinja.health -= this.opponentNinja.attack.damage
-    }
-
-    if (this.playerNinja.health < 0) {
+    //Anyone dead yet?
+    if(isPlayerDead && !isOpponentDead) {
       this.playerDies();
       return;
     }
+    else if(!isPlayerDead && isOpponentDead) {
+      this.opponentDies();
+      return;
+    }
+    else if(isPlayerDead && isOpponentDead) {
+      this.draw();
+      return;
+    }
 
-    this.turnOfPlayer();
+    //Next turn
+    setTimeout(() => {
+      this.turn("player");
+    }, 2000)
+  }
+
+  playerPlays(type: string) {
+    this.playerChoice = type;
+    this.turn("opponent");
+  }
+
+  opponentPlays(type: string) {
+    this.opponentChoice = type;
+    this.turn("decision");
   }
 
   playerDies() {
-    this.router.navigateByUrl('/fight-result/' + this.playerNinja.id + '/' + this.opponentNinja.id + '/lost')
+    setTimeout(() => {
+      this.router.navigateByUrl('/fight-result/' + this.playerNinja.id + '/' + this.opponentNinja.id + '/lost');
+    }, 2000)
   }
 
   opponentDies() {
-    this.router.navigateByUrl('/fight-result/' + this.playerNinja.id + '/' + this.opponentNinja.id + '/won')
+    setTimeout(() => {
+      this.router.navigateByUrl('/fight-result/' + this.playerNinja.id + '/' + this.opponentNinja.id + '/won');
+    }, 2000)
+  }
+
+  draw() {
+    setTimeout(() => {
+      this.router.navigateByUrl('/fight-result/' + this.playerNinja.id + '/' + this.opponentNinja.id + '/draw');
+    }, 2000)
   }
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { NinjaService } from '../ninja.service';
-import { Ninja } from '../ninja';
+import { NinjaService, Ninja } from '../ninja.service';
 
 @Component({
   selector: 'app-opponent-selection',
@@ -16,6 +15,7 @@ export class OpponentSelectionComponent implements OnInit {
   opponentNinja: Ninja;
 
   constructor(
+
     private route: ActivatedRoute,
     private ninjaService: NinjaService
   ) { }

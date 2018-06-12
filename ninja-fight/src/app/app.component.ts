@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import {Ninja} from './ninja';
+import { GlobalService } from './global.service'
 
 @Component({
   selector: 'app-root',
@@ -10,4 +8,8 @@ import {Ninja} from './ninja';
 })
 export class AppComponent {
   title = 'Ninja Battle';
+
+  constructor(private globalService: GlobalService) {
+    globalService.backgroundImage = "url(../assets/start-background.jpg)";
+  }
 }

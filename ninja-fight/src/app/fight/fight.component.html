@@ -1,53 +1,96 @@
 <div class="container text-center">
   <div class="row justify-content-center">
-    <h3 class="text-danger">{{title}}</h3>
+    <h3 class="text-white">{{title}}</h3>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-4">
+    <div class="col-sm-5">
       <img src={{playerNinja.image}} class="img-fluid"/>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-5">
       <img src={{opponentNinja.image}} class="img-fluid"/>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-4">
-      <label>{{playerNinja.health}}</label>
+    <div class="col-sm-5">
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar"
+        [ngStyle]="{'width': playerNinja.health.percent + '%'}"
+        [attr.aria-valuenow]="playerNinja.health.now"
+        aria-valuemin="0"
+        [attr.aria-valuemax]="playerNinja.health.max">health</div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"
+        [ngStyle]="{'width': playerNinja.chakra.percent + '%'}"
+        [attr.aria-valuenow]="playerNinja.chakra.now"
+        aria-valuemin="0"
+        [attr.aria-valuemax]="playerNinja.chakra.max">chakra</div>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <label>{{opponentNinja.health}}</label>
+    <div class="col-sm-5">
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar"
+        [ngStyle]="{'width': opponentNinja.health.percent + '%'}"
+        [attr.aria-valuenow]="opponentNinja.health.now"
+        aria-valuemin="0"
+        [attr.aria-valuemax]="opponentNinja.health.max">health</div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"
+        [ngStyle]="{'width': opponentNinja.chakra.percent + '%'}"
+        [attr.aria-valuenow]="opponentNinja.chakra.now"
+        aria-valuemin="0"
+        [attr.aria-valuemax]="opponentNinja.chakra.max">chakra</div>
+      </div>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-4">
-      <button (click)="playerPlays('attack')" class="mx-auto mt-3 btn btn-success"
-      [class.disabled]="!isPlayerTurn">
-        {{playerNinja.attack.name}}</button>
-      <button (click)="playerPlays('defence')" class="mx-auto m-2 btn btn-primary"
-      [class.disabled]="!isPlayerTurn">
-        {{playerNinja.defence}}</button>
-      <button (click)="playerPlays('special')" class="mx-auto btn btn-danger"
-      [class.disabled]="!isPlayerTurn">
-        {{playerNinja.special}}</button>
+    <div class="col-sm-5">
+      <div class="btn-group-vertical">
+        <button (click)="playerPlays('attack')" class="mx-auto mt-3 btn btn-success"
+        [attr.disabled]="!isPlayerAttackActive ? '' : null"
+        data-toggle="tooltip" data-html="true" title="{{playerNinja.attack.name}} => dmg: {{playerNinja.attack.damage}} | chkr: {{playerNinja.attack.chakra}}">
+          <img class="w-50" src={{playerNinja.attack.image}}/>
+        </button>
+        <button (click)="playerPlays('defence')" class="mx-auto m-2 btn btn-primary"
+        [attr.disabled]="!isPlayerDefenceActive ? '' : null"
+        data-toggle="tooltip" data-html="true" title="{{playerNinja.defence.name}} => dmg: {{playerNinja.defence.damage}} | chkr: {{playerNinja.defence.chakra}}">
+          <img class="w-50" src={{playerNinja.defence.image}}/>
+        </button>
+        <button (click)="playerPlays('special')" class="mx-auto btn btn-danger"
+        [attr.disabled]="!isPlayerSpecialActive ? '' : null"
+        data-toggle="tooltip" data-html="true" title="{{playerNinja.special.name}} => dmg: {{playerNinja.special.damage}} | chkr: {{playerNinja.special.chakra}}">
+          <img class="w-50" src={{playerNinja.special.image}}/>
+        </button>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <button (click)="opponentPlays('attack')" id="opponentAttackButton" class="disabled mx-auto mt-3 btn btn-success">
-        {{opponentNinja.attack.name}}</button>
-      <button (click)="opponentPlays('defence')" id="opponentDefenceButton" class="disabled mx-auto m-2 btn btn-primary">
-        {{opponentNinja.defence}}</button>
-      <button (click)="opponentPlays('special')" id="opponentSpecialButton" class="disabled mx-auto btn btn-danger">
-        {{opponentNinja.special}}</button>
+    <div class="col-sm-5">
+      <div class="btn-group-vertical">
+        <button class="mx-auto mt-3 btn btn-success" disabled>
+          <img class="w-50" src={{opponentNinja.attack.image}}/>
+        </button>
+        <button class="mx-auto m-2 btn btn-primary" disabled>
+          <img class="w-50" src={{opponentNinja.defence.image}}/>
+        </button>
+        <button class="mx-auto btn btn-danger" disabled>
+          <img class="w-50" src={{opponentNinja.special.image}}/>
+        </button>
+      </div>
     </div>
   </div>
-  <div *ngIf="isChoiceMade" class="row justify-content-center mt-5">
+  <div *ngIf="isDecisionActive" class="row justify-content-center mt-5">
     <div class="col-sm-4">
-      <label>{{playerChoice}}</label>
+      <p class="text-white" [class.bg-success]="playerChoice == 'attack'"
+      [class.bg-primary]="playerChoice == 'defence'"
+      [class.bg-danger]="playerChoice == 'special'">{{playerChoice}}</p>
     </div>
     <div class=col-sm-4>
       <h3>VS</h3>
     </div>
     <div class="col-sm-4">
-      <label>{{enemyChoice}}</label>
+      <p class="text-white" [class.bg-success]="opponentChoice == 'attack'"
+      [class.bg-primary]="opponentChoice == 'defence'"
+      [class.bg-danger]="opponentChoice == 'special'">{{opponentChoice}}</p>
     </div>
   </div>
 </div>
