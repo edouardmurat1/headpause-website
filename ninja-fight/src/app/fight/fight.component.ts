@@ -3,8 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { GlobalService } from '../global.service';
-import { NinjaService, Ninja, Action } from '../ninja.service';
-import { EnemyAI } from './enemyai';
+import { NinjaService, Ninja, Action } from '../ninja/ninja.service';
+import { StoryService, Battle } from '../story/story.service';
+import { EnemyAI } from '../ai/enemyai';
 
 @Component({
   selector: 'app-fight',
@@ -15,6 +16,7 @@ export class FightComponent implements OnInit {
 
   title: string;
 
+  battle: Battle;
   playerNinja: Ninja;
   opponentNinja: Ninja;
 
@@ -33,13 +35,16 @@ export class FightComponent implements OnInit {
     private router: Router,
     private location: Location,
     private ninjaService: NinjaService,
-    private globalService: GlobalService) {
+    private globalService: GlobalService,
+    private storyService: StoryService) {
       globalService.backgroundImage = "url(../assets/fight-background.jpg)";
     }
 
   ngOnInit() {
+    const battleid = +this.route.snapshot.paramMap.get('battleid');
     const playerid = +this.route.snapshot.paramMap.get('playerid');
     const opponentid = +this.route.snapshot.paramMap.get('opponentid');
+    this.battle = this.storyService.getBattle(battleid);
     this.playerNinja = this.ninjaService.getNinja(playerid);
     this.opponentNinja = this.ninjaService.getNinja(opponentid);
     this.enemyAI = new EnemyAI(this.opponentNinja, this.playerNinja);
@@ -81,7 +86,7 @@ export class FightComponent implements OnInit {
     this.isPlayerDefenceActive = false;
     this.isPlayerSpecialActive = false;
 
-    setTimeout(() =>
+    setTimeout(() => {
       var nextAction = this.enemyAI.nextMove();
       this.opponentPlays(nextAction.type);
     }, 2000)
@@ -183,19 +188,28 @@ export class FightComponent implements OnInit {
 
   playerDies() {
     setTimeout(() => {
-      this.router.navigateByUrl('/fight-result/' + this.playerNinja.id + '/' + this.opponentNinja.id + '/lost');
+      this.router.navigateByUrl('/fight-result/'
+      + this.battle.id + '/'
+      + this.playerNinja.id + '/'
+      + this.opponentNinja.id + '/lost');
     }, 2000)
   }
 
   opponentDies() {
     setTimeout(() => {
-      this.router.navigateByUrl('/fight-result/' + this.playerNinja.id + '/' + this.opponentNinja.id + '/won');
+      this.router.navigateByUrl('/fight-result/'
+      + this.battle.id + '/'
+      + this.playerNinja.id + '/'
+      + this.opponentNinja.id + '/won');
     }, 2000)
   }
 
   draw() {
     setTimeout(() => {
-      this.router.navigateByUrl('/fight-result/' + this.playerNinja.id + '/' + this.opponentNinja.id + '/draw');
+      this.router.navigateByUrl('/fight-result/'
+      + this.battle.id + '/'
+      + this.playerNinja.id + '/'
+      + this.opponentNinja.id + '/draw');
     }, 2000)
   }
 }

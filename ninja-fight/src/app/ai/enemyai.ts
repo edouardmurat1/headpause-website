@@ -1,4 +1,4 @@
-import { Ninja, Action } from '../ninja.service'
+import { Ninja, Action } from '../ninja/ninja.service'
 
 export class EnemyAI {
 

@@ -8,25 +8,39 @@ export class NinjaService {
   ninjas: Ninja[];
 
   constructor() {
-    let sasuke = new Ninja(1, 'Sasuke', '../assets/sasuke.png',
+    let iruka = new Ninja(1, 'Iruka', '../assets/iruka.png',
+      new Health(100), new Chakra(100),
+      new Action('shuriken', 20, 0, '../assets/iruka-shuriken.jpg', 'attack'),
+      new Action('human shield', 0, 50, '../assets/iruka-human-shield.jpg', 'defence'),
+      new Action('yell', 50, 50, '../assets/iruka-yell.jpg', 'special'));
+
+    let mizuki = new Ninja(2, 'Mizuki', '../assets/mizuki.png',
+      new Health(100), new Chakra(100),
+      new Action('shuriken', 15, 0, '../assets/mizuki-shuriken.jpg', 'attack'),
+      new Action('substitution', 0, 50, '../assets/mizuki-substitution.jpg', 'defence'),
+      new Action('deception', 50, 70, '../assets/mizuki-deception.jpg', 'special'));
+
+    let sasuke = new Ninja(3, 'Sasuke', '../assets/sasuke.png',
       new Health(75), new Chakra(130),
       new Action('shuriken', 15, 0, '../assets/sasuke-shuriken.jpg', 'attack'),
       new Action('sharingan', 0, 50, '../assets/sasuke-sharingan.jpg', 'defence'),
       new Action('fireball', 50, 70, '../assets/sasuke-fireball.jpg', 'special'));
 
-    let naruto = new Ninja(2, 'Naruto', '../assets/naruto.png',
+    let naruto = new Ninja(4, 'Naruto', '../assets/naruto.png',
       new Health(115), new Chakra(100),
       new Action('punch', 30, 10, '../assets/naruto-punch.jpg', 'attack'),
       new Action('transformation', 0, 30, '../assets/naruto-transformation.jpg', 'defence'),
       new Action('shadow clone', 60, 60, '../assets/naruto-shadowclone.jpg', 'special'));
 
-    let sakura = new Ninja(3, 'Sakura', '../assets/sakura.png',
+    let sakura = new Ninja(5, 'Sakura', '../assets/sakura.png',
       new Health(100), new Chakra(115),
       new Action('kunai', 15, 0, '../assets/sakura-kunai.jpg', 'attack'),
       new Action('substitution', 0, 20, '../assets/sakura-substitution.jpg', 'defence'),
       new Action('inner strength', 40, 70, '../assets/sakura-innerstrength.jpg', 'special'));
 
     this.ninjas = [
+      iruka,
+      mizuki,
       sasuke,
       naruto,
       sakura
@@ -47,8 +61,21 @@ export class NinjaService {
     return this.copy(this.ninjas);
   }
 
+  getNinjaByName(name: string): Ninja {
+    return this.copy(this.ninjas.find(ninja => ninja.name === name));
+  }
+
   getNinja(id: number): Ninja {
     return this.copy(this.ninjas.find(ninja => ninja.id === id));
+  }
+
+  getNinjasByName(names: string[]): Ninja[] {
+    let ninjas: Ninja[] = [];
+    for (let name of names) {
+      ninjas.push(this.getNinjaByName(name));
+    }
+
+    return ninjas;
   }
 
   getRandomNinja(): Ninja {

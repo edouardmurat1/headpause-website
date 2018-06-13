@@ -3,15 +3,15 @@
     <h3 class="text-white">{{title}}</h3>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-5">
+    <div class="col-5">
       <img src={{playerNinja.image}} class="img-fluid"/>
     </div>
-    <div class="col-sm-5">
+    <div class="col-5">
       <img src={{opponentNinja.image}} class="img-fluid"/>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-5">
+    <div class="col-5">
       <div class="progress">
         <div class="progress-bar bg-danger" role="progressbar"
         [ngStyle]="{'width': playerNinja.health.percent + '%'}"
@@ -27,7 +27,7 @@
         [attr.aria-valuemax]="playerNinja.chakra.max">chakra</div>
       </div>
     </div>
-    <div class="col-sm-5">
+    <div class="col-5">
       <div class="progress">
         <div class="progress-bar bg-danger" role="progressbar"
         [ngStyle]="{'width': opponentNinja.health.percent + '%'}"
@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-5">
+    <div class="col-5">
       <div class="btn-group-vertical">
         <button (click)="playerPlays('attack')" class="mx-auto mt-3 btn btn-success"
         [attr.disabled]="!isPlayerAttackActive ? '' : null"
@@ -64,7 +64,7 @@
         </button>
       </div>
     </div>
-    <div class="col-sm-5">
+    <div class="col-5">
       <div class="btn-group-vertical">
         <button class="mx-auto mt-3 btn btn-success" disabled>
           <img class="w-50" src={{opponentNinja.attack.image}}/>
@@ -79,15 +79,15 @@
     </div>
   </div>
   <div *ngIf="isDecisionActive" class="row justify-content-center mt-5">
-    <div class="col-sm-4">
+    <div class="col-4">
       <p class="text-white" [class.bg-success]="playerChoice == 'attack'"
       [class.bg-primary]="playerChoice == 'defence'"
       [class.bg-danger]="playerChoice == 'special'">{{playerChoice}}</p>
     </div>
-    <div class=col-sm-4>
+    <div class=col-4>
       <h3>VS</h3>
     </div>
-    <div class="col-sm-4">
+    <div class="col-4">
       <p class="text-white" [class.bg-success]="opponentChoice == 'attack'"
       [class.bg-primary]="opponentChoice == 'defence'"
       [class.bg-danger]="opponentChoice == 'special'">{{opponentChoice}}</p>
