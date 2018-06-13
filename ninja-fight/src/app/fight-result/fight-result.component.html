@@ -10,7 +10,7 @@
   <div class="row justify-content-center mt-5">
     <button *ngIf="result =='won'" type="button" class="btn btn-primary btn-lg"
     routerLink="/ninja-selection/{{nextBattle.id}}">Next Battle !</button>
-    <button *ngIf="result =='lost'" type="button" class="btn btn-primary btn-lg"
+    <button *ngIf="result !='won'" type="button" class="btn btn-primary btn-lg"
     routerLink="/ninja-selection/{{battle.id}}">Replay Battle !</button>
   </div>
 </div>

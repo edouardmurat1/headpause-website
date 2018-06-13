@@ -21,7 +21,7 @@ export class NinjaSelectionComponent implements OnInit {
     private globalService: GlobalService,
     private storyService: StoryService,
     private route: ActivatedRoute) {
-      globalService.backgroundImage = "url(../assets/ninja-selection-background.jpg)";
+      globalService.backgroundImage = "url(../assets/bg/ninja-selection-bg.jpg)";
 
       const id = +this.route.snapshot.paramMap.get('id');
       this.battle = this.storyService.getBattle(id);

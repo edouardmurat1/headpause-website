@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'Ninja Battle';
 
   constructor(private globalService: GlobalService) {
-    globalService.backgroundImage = "url(../assets/start-background.jpg)";
+    globalService.backgroundImage = "url(../assets/bg/start-bg.jpg)";
   }
 }

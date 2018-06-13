@@ -22,7 +22,7 @@ export class FightResultComponent implements OnInit {
     private ninjaService: NinjaService,
     private globalService: GlobalService,
     private storyService: StoryService) {
-      globalService.backgroundImage = "url(../assets/fight-result-background.jpg)";
+      globalService.backgroundImage = "url(../assets/bg/fight-result-bg.jpg)";
     }
 
   ngOnInit() {

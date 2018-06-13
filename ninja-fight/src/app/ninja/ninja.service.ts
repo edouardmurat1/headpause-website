@@ -17,7 +17,7 @@ export class NinjaService {
     let mizuki = new Ninja(2, 'Mizuki', '../assets/mizuki.png',
       new Health(100), new Chakra(100),
       new Action('shuriken', 15, 0, '../assets/mizuki-shuriken.jpg', 'attack'),
-      new Action('substitution', 0, 50, '../assets/mizuki-substitution.jpg', 'defence'),
+      new Action('substitution', 0, 50, '../assets/substitution.jpg', 'defence'),
       new Action('deception', 50, 70, '../assets/mizuki-deception.jpg', 'special'));
 
     let sasuke = new Ninja(3, 'Sasuke', '../assets/sasuke.png',
@@ -35,15 +35,36 @@ export class NinjaService {
     let sakura = new Ninja(5, 'Sakura', '../assets/sakura.png',
       new Health(100), new Chakra(115),
       new Action('kunai', 15, 0, '../assets/sakura-kunai.jpg', 'attack'),
-      new Action('substitution', 0, 20, '../assets/sakura-substitution.jpg', 'defence'),
+      new Action('substitution', 0, 20, '../assets/substitution.jpg', 'defence'),
       new Action('inner strength', 40, 70, '../assets/sakura-innerstrength.jpg', 'special'));
+
+    let kakashi = new Ninja(6, 'Kakashi', '../assets/kakashi.png',
+      new Health(100), new Chakra(100),
+      new Action('copy', 15, 10, '../assets/kakashi-kunai.jpg', 'attack'),
+      new Action('substitution', 0, 10, '../assets/substitution.jpg', 'defence'),
+      new Action('chidori', 70, 70, '../assets/kakashi-chidori.jpg', 'special'));
+
+    let zabuza = new Ninja(7, 'Zabuza', '../assets/zabuza.png',
+      new Health(100), new Chakra(100),
+      new Action('sword', 15, 10, '../assets/zabuza-sword.jpg', 'attack'),
+      new Action('water clone', 0, 10, '../assets/zabuza-water-clone.jpg', 'defence'),
+      new Action('mist', 70, 70, '../assets/zabuza-mist.jpg', 'special'));
+
+    let haku = new Ninja(8, 'Haku', '../assets/haku.png',
+      new Health(100), new Chakra(100),
+      new Action('senbon', 15, 10, '../assets/haku-senbon.jpg', 'attack'),
+      new Action('disguise', 0, 10, '../assets/haku-disguise.jpg', 'defence'),
+      new Action('ice mirrors', 70, 70, '../assets/haku-ice-mirrors.jpg', 'special'));
 
     this.ninjas = [
       iruka,
       mizuki,
       sasuke,
       naruto,
-      sakura
+      sakura,
+      kakashi,
+      zabuza,
+      haku
     ];
   }
 

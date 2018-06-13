@@ -37,7 +37,7 @@ export class FightComponent implements OnInit {
     private ninjaService: NinjaService,
     private globalService: GlobalService,
     private storyService: StoryService) {
-      globalService.backgroundImage = "url(../assets/fight-background.jpg)";
+      globalService.backgroundImage = "url(../assets/bg/fight-bg.jpg)";
     }
 
   ngOnInit() {
