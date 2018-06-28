@@ -1,0 +1,34 @@
+.img-fluid {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  transform: translate(25%, -150%);
+  -ms-transform: translate(25%, -150%);
+  text-align: center;
+}
+
+.img-container:hover .img-fluid {
+  opacity: 0.3;
+}
+
+.img-container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  color: black;
+  font-size: 40px;
+}
+
+.text-gold {
+  color: gold;
+}

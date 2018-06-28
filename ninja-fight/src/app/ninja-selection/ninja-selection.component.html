@@ -2,9 +2,9 @@
 <div class="container text-center">
   <div class="row justify-content-center">
     <div class="col-4">
-      <div *ngFor="let player of players" class="row">
+      <div *ngFor="let player of players" class="flex-row">
         <div class="img-container"
-        routerLink="/fight/{{battle.id}}/{{player.id}}/{{enemy.id}}">
+        routerLink="/story/fight/{{battle.id}}/{{player.id}}/{{enemy.id}}">
           <img src={{player.image}} class="img-fluid"/>
           <div class="middle">
             <div class="text text-white">{{player.name}}</div>

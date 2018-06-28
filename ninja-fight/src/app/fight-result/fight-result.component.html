@@ -7,10 +7,20 @@
     <img src={{playerNinja.image}} class="img-fluid"/>
     <img *ngIf="result == 'draw'" src={{opponentNinja.image}} class="img-fluid"/>
   </div>
-  <div class="row justify-content-center mt-5">
+  <div *ngIf="battle.id > 0" class="row justify-content-center mt-5">
     <button *ngIf="result =='won'" type="button" class="btn btn-primary btn-lg"
-    routerLink="/ninja-selection/{{nextBattle.id}}">Next Battle !</button>
-    <button *ngIf="result !='won'" type="button" class="btn btn-primary btn-lg"
-    routerLink="/ninja-selection/{{battle.id}}">Replay Battle !</button>
+    routerLink="/story/ninja-selection/{{battle.id + 1}}">Next Battle !</button>
+    <button *ngIf="(result =='lost') && (battle.id > 1)" type="button" class="btn btn-primary btn-lg"
+    routerLink="/story/ninja-selection/{{battle.id - 1}}">Previous Battle !</button>
+    <button *ngIf="(result =='draw') || ((result == 'lost') && (battle.id == 1))" type="button" class="btn btn-primary btn-lg"
+    routerLink="/story/ninja-selection/{{battle.id}}">Replay Battle !</button>
+  </div>
+  <div *ngIf="battle.id == 0" class="row btn-group-vertical justify-content-center mt-5">
+    <button type="button" class="btn btn-primary btn-lg mb-3"
+    routerLink="/battle/{{playerNinja.id}}/{{opponentNinja.id}}">Replay Battle</button>
+    <button type="button" class="btn btn-primary btn-lg mb-3"
+    routerLink="/battle/player-selection">Choose Other Ninjas</button>
+    <button type="button" class="btn btn-primary btn-lg"
+    routerLink="/start">Back To Menu</button>
   </div>
 </div>

@@ -27,6 +27,9 @@ export class NinjaSelectionComponent implements OnInit {
       this.battle = this.storyService.getBattle(id);
       this.players = this.storyService.getBattle(id).players;
       this.enemy = this.storyService.getBattle(id).enemy;
+      console.log(this.storyService.getBattle(id));
   }
+
+  ngOnInit() {}
 
 }

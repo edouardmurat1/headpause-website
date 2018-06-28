@@ -27,8 +27,12 @@ export class FightComponent implements OnInit {
   isPlayerSpecialActive: boolean;
 
   isDecisionActive: boolean;
-  playerChoice: string;
-  opponentChoice: string;
+  playerChoice: Action;
+  opponentChoice: Action;
+
+  hoverAttack: boolean;
+  hoverDefence: boolean;
+  hoverSpecial: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,6 +53,9 @@ export class FightComponent implements OnInit {
     this.opponentNinja = this.ninjaService.getNinja(opponentid);
     this.enemyAI = new EnemyAI(this.opponentNinja, this.playerNinja);
 
+    if (this.battle == null) {
+      this.battle = new Battle(0);
+    }
     this.turn("player");
   }
 
@@ -88,7 +95,11 @@ export class FightComponent implements OnInit {
 
     setTimeout(() => {
       var nextAction = this.enemyAI.nextMove();
-      this.opponentPlays(nextAction.type);
+      if(nextAction) {
+        this.opponentPlays(nextAction.type);
+      } else {
+        this.opponentPlays("skip");
+      }
     }, 2000)
   }
 
@@ -103,110 +114,140 @@ export class FightComponent implements OnInit {
 
     //remove chakra from Player Action
     let chakraSpentByPlayer = 0;
-    if(this.playerChoice == "attack") {
+    if(this.playerChoice.type == "attack") {
       chakraSpentByPlayer += this.playerNinja.attack.chakra;
-    } else if(this.playerChoice == "defence") {
+    } else if(this.playerChoice.type == "defence") {
       chakraSpentByPlayer += this.playerNinja.defence.chakra;
-    } else if(this.playerChoice == "special") {
+    } else if(this.playerChoice.type == "special") {
       chakraSpentByPlayer += this.playerNinja.special.chakra;
     }
     this.playerNinja.chakra.remove(chakraSpentByPlayer);
 
     //remove chakra from Opponent Action
     let chakraSpentByOpponent = 0;
-    if(this.opponentChoice == "attack") {
+    if(this.opponentChoice.type == "attack") {
       chakraSpentByOpponent += this.opponentNinja.attack.chakra;
-    } else if(this.opponentChoice == "defence") {
+    } else if(this.opponentChoice.type == "defence") {
       chakraSpentByOpponent += this.opponentNinja.defence.chakra;
-    } else if(this.opponentChoice == "special") {
+    } else if(this.opponentChoice.type == "special") {
       chakraSpentByOpponent += this.opponentNinja.special.chakra;
     }
     this.opponentNinja.chakra.remove(chakraSpentByOpponent);
 
     //What is the result of this turn?
-    // defence > attack > special > defence
-    if(this.playerChoice == "attack") {
-      if(this.opponentChoice == "attack") {
-        this.playerNinja.health.remove(this.opponentNinja.attack.damage);
-        this.opponentNinja.health.remove(this.playerNinja.attack.damage);
-      } else if(this.opponentChoice == "defence") {
-        //nothing happens
-      } else if(this.opponentChoice == "special") {
-        this.opponentNinja.health.remove(this.playerNinja.attack.damage);
-      }
-    } else if(this.playerChoice == "defence") {
-      if(this.opponentChoice == "attack") {
-        //nothing happens
-      } else if(this.opponentChoice == "defence") {
-        //nothing happens
-      } else if(this.opponentChoice == "special") {
-        this.playerNinja.health.remove(this.opponentNinja.special.damage);
-      }
-    } else if(this.playerChoice == "special") {
-      if(this.opponentChoice == "attack") {
-        this.playerNinja.health.remove(this.opponentNinja.attack.damage);
-      } else if(this.opponentChoice == "defence") {
-        this.opponentNinja.health.remove(this.playerNinja.special.damage);
-      } else if(this.opponentChoice == "special") {
-        this.playerNinja.health.remove(this.opponentNinja.special.damage);
-        this.opponentNinja.health.remove(this.playerNinja.special.damage);
-      }
+    // defence > attack & special
+
+    //Player damage
+    if(this.playerChoice.type == "attack" && this.opponentChoice.type != "defence") {
+      this.opponentNinja.health.remove(this.playerNinja.attack.damage);
+    } else if(this.playerChoice.type == "special" && this.opponentChoice.type != "defence") {
+      this.opponentNinja.health.remove(this.playerNinja.special.damage);
     }
 
-    let isPlayerDead = (this.playerNinja.health.now <= 0 || this.playerNinja.chakra.now <= 0);
-    let isOpponentDead = (this.opponentNinja.health.now <= 0 || this.opponentNinja.chakra.now <= 0);
+    //Opponent damage
+    if(this.opponentChoice.type == "attack" && this.playerChoice.type != "defence") {
+      this.playerNinja.health.remove(this.opponentNinja.attack.damage);
+    } else if(this.opponentChoice.type == "special" && this.playerChoice.type != "defence") {
+      this.playerNinja.health.remove(this.opponentNinja.special.damage);
+    }
+
+    let isPlayerDead = this.playerNinja.health.now <= 0;
+    let isPlayerOutOfChakra = this.playerNinja.chakra.now <= 0;
+    let isOpponentDead = this.opponentNinja.health.now <= 0;
+    let isOpponentOutOfChakra = this.opponentNinja.chakra.now <= 0;
+    let playerHealth = this.playerNinja.health.now;
+    let opponentHealth = this.opponentNinja.health.now;
 
     //Anyone dead yet?
     if(isPlayerDead && !isOpponentDead) {
-      this.playerDies();
+      this.lost();
       return;
-    }
-    else if(!isPlayerDead && isOpponentDead) {
-      this.opponentDies();
+    } else if(!isPlayerDead && isOpponentDead) {
+      this.won();
       return;
-    }
-    else if(isPlayerDead && isOpponentDead) {
+    } else if(isPlayerDead && isOpponentDead) {
       this.draw();
       return;
+    }
+    //Anyone out of chakra?
+    if(isPlayerOutOfChakra && !isOpponentOutOfChakra) {
+      this.lost();
+      return;
+    } else if(!isPlayerOutOfChakra && isOpponentOutOfChakra) {
+      this.won();
+      return;
+    } else if(isPlayerOutOfChakra && isOpponentOutOfChakra) {
+      if(playerHealth > opponentHealth) {
+        this.won();
+        return;
+      } else if(playerHealth < opponentHealth) {
+        this.lost();
+        return;
+      } else if(playerHealth == opponentHealth) {
+        this.draw();
+        return;
+      }
     }
 
     //Next turn
     setTimeout(() => {
       this.turn("player");
-    }, 2000)
+    }, 4000)
   }
 
   playerPlays(type: string) {
-    this.playerChoice = type;
+    if(type == "attack") {
+      this.playerChoice = this.playerNinja.attack;
+      this.playerNinja.attack.playSound();
+    } else if(type == "defence") {
+      this.playerChoice = this.playerNinja.defence;
+      this.playerNinja.defence.playSound();
+    } else if(type == "special") {
+      this.playerChoice = this.playerNinja.special;
+      this.playerNinja.special.playSound();
+    }
     this.turn("opponent");
   }
 
   opponentPlays(type: string) {
-    this.opponentChoice = type;
+    if(type == "attack") {
+      this.opponentChoice = this.opponentNinja.attack;
+    } else if(type == "defence") {
+      this.opponentChoice = this.opponentNinja.defence;
+    } else if(type == "special") {
+      this.opponentChoice = this.opponentNinja.special;
+    } else if(type == "skip") {
+      this.opponentChoice = new Action('', '', 'skip');
+    }
     this.turn("decision");
   }
 
-  playerDies() {
+  lost() {
     setTimeout(() => {
-      this.router.navigateByUrl('/fight-result/'
+      this.router.navigateByUrl('/story/fight-result/'
       + this.battle.id + '/'
       + this.playerNinja.id + '/'
       + this.opponentNinja.id + '/lost');
     }, 2000)
   }
 
-  opponentDies() {
+  won() {
     setTimeout(() => {
-      this.router.navigateByUrl('/fight-result/'
-      + this.battle.id + '/'
-      + this.playerNinja.id + '/'
-      + this.opponentNinja.id + '/won');
+      if(this.storyService.isLastBattle(this.battle.id)) {
+        this.router.navigateByUrl('/story/end');
+      }
+      else {
+        this.router.navigateByUrl('/story/fight-result/'
+        + this.battle.id + '/'
+        + this.playerNinja.id + '/'
+        + this.opponentNinja.id + '/won');
+      }
     }, 2000)
   }
 
   draw() {
     setTimeout(() => {
-      this.router.navigateByUrl('/fight-result/'
+      this.router.navigateByUrl('/story/fight-result/'
       + this.battle.id + '/'
       + this.playerNinja.id + '/'
       + this.opponentNinja.id + '/draw');

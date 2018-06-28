@@ -30,7 +30,12 @@ export class EnemyAI {
           finalAction = this.randomAction(killableActions);
         }
       } else {
-        finalAction = this.randomAction(chakrableActions);
+        let nonUseUpActions = this.filterActionsThatWontUseAllChakra(chakrableActions, this.opponentNinja);
+        if(nonUseUpActions.length > 0) {
+          finalAction = this.randomAction(nonUseUpActions);
+        } else {
+          finalAction = this.randomAction(chakrableActions);
+        }
       }
     }
 

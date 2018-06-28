@@ -32,7 +32,7 @@ export class StoryService {
     new Battle(
       5,
       this.getNinjasByName(['Naruto','Sasuke']),
-      this.getNinjaByName('Haku'));
+      this.getNinjaByName('Haku'))
   ];
 
   getBattle(id: number): Battle {
@@ -43,8 +43,12 @@ export class StoryService {
     return this.ninjaService.getNinjasByName(names);
   }
 
-  getNinjaByName(name: string[]): Ninja {
+  getNinjaByName(name: string): Ninja {
     return this.ninjaService.getNinjaByName(name);
+  }
+
+  isLastBattle(id: number): boolean {
+    return id == this.battles.length;
   }
 }
 
@@ -53,7 +57,7 @@ export class Battle {
   players: Ninja[];
   enemy: Ninja;
 
-  constructor(id: number, players: Ninja[], enemy: Ninja) {
+  constructor(id: number, players?: Ninja[], enemy?: Ninja) {
     this.id = id;
     this.players = players;
     this.enemy = enemy;

@@ -15,7 +15,7 @@ export class FightResultComponent implements OnInit {
   battle: Battle;
   nextBattle: Battle;
   playerNinja: Ninja;
-  opponentNinja: Ninja
+  opponentNinja: Ninja;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,5 +34,9 @@ export class FightResultComponent implements OnInit {
     this.nextBattle = this.storyService.getBattle(battleid+1);
     this.playerNinja = this.ninjaService.getNinja(playerid);
     this.opponentNinja = this.ninjaService.getNinja(opponentid);
+    
+    if (this.battle == null) {
+      this.battle = new Battle(0);
+    }
   }
 }
