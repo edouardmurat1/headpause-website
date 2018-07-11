@@ -27,8 +27,8 @@ export class FightComponent implements OnInit {
   isPlayerSpecialActive: boolean;
 
   isDecisionActive: boolean;
-  playerChoice: Action;
-  opponentChoice: Action;
+  playerAction: Action;
+  opponentAction: Action;
 
   hoverAttack: boolean;
   hoverDefence: boolean;
@@ -73,83 +73,35 @@ export class FightComponent implements OnInit {
 
   playerTurn() {
     this.title = "Your turn";
-
-    let chakra = this.playerNinja.chakra.now;
-    let chakraForAttack = this.playerNinja.attack.chakra;
-    let chakraForDefence = this.playerNinja.defence.chakra;
-    let chakraForSpecial = this.playerNinja.special.chakra;
-
-    this.isPlayerAttackActive = (chakra >= chakraForAttack)? true : false;
-    this.isPlayerDefenceActive = (chakra >= chakraForDefence)? true : false;
-    this.isPlayerSpecialActive = (chakra >= chakraForSpecial)? true : false;
-
     this.isDecisionActive = false;
   }
 
   opponentTurn() {
     this.title = "Opponent's turn";
-
-    this.isPlayerAttackActive = false;
-    this.isPlayerDefenceActive = false;
-    this.isPlayerSpecialActive = false;
-
-    setTimeout(() => {
-      var nextAction = this.enemyAI.nextMove();
-      if(nextAction) {
-        this.opponentPlays(nextAction.type);
-      } else {
-        this.opponentPlays("skip");
-      }
-    }, 2000)
+    var nextAction = this.enemyAI.nextMove();
+    if(nextAction) {
+      this.opponentPlays(nextAction);
+    } else {
+      this.opponentPlays(null);
+    }
   }
 
   decisionTurn() {
     this.title = "Result of this turn";
 
-    this.isPlayerAttackActive = false;
-    this.isPlayerDefenceActive = false;
-    this.isPlayerSpecialActive = false;
-
     this.isDecisionActive = true;
 
     //remove chakra from Player Action
-    let chakraSpentByPlayer = 0;
-    if(this.playerChoice.type == "attack") {
-      chakraSpentByPlayer += this.playerNinja.attack.chakra;
-    } else if(this.playerChoice.type == "defence") {
-      chakraSpentByPlayer += this.playerNinja.defence.chakra;
-    } else if(this.playerChoice.type == "special") {
-      chakraSpentByPlayer += this.playerNinja.special.chakra;
-    }
-    this.playerNinja.chakra.remove(chakraSpentByPlayer);
+    this.playerNinja.chakra.remove(this.playerAction.chakra);
 
     //remove chakra from Opponent Action
-    let chakraSpentByOpponent = 0;
-    if(this.opponentChoice.type == "attack") {
-      chakraSpentByOpponent += this.opponentNinja.attack.chakra;
-    } else if(this.opponentChoice.type == "defence") {
-      chakraSpentByOpponent += this.opponentNinja.defence.chakra;
-    } else if(this.opponentChoice.type == "special") {
-      chakraSpentByOpponent += this.opponentNinja.special.chakra;
-    }
-    this.opponentNinja.chakra.remove(chakraSpentByOpponent);
+    this.opponentNinja.chakra.remove(this.opponentAction.chakra);
 
-    //What is the result of this turn?
-    // defence > attack & special
+    //Player receives damage
+    this.playerNinja.health.remove(this.opponentAction.damage - this.playerAction.defence);
 
-    //Player damage
-    if(this.playerChoice.type == "attack" && this.opponentChoice.type != "defence") {
-      this.opponentNinja.health.remove(this.playerNinja.attack.damage);
-    } else if(this.playerChoice.type == "special" && this.opponentChoice.type != "defence") {
-      this.opponentNinja.health.remove(this.playerNinja.special.damage);
-    }
-
-    //Opponent damage
-    if(this.opponentChoice.type == "attack" && this.playerChoice.type != "defence") {
-      this.playerNinja.health.remove(this.opponentNinja.attack.damage);
-    } else if(this.opponentChoice.type == "special" && this.playerChoice.type != "defence") {
-      this.playerNinja.health.remove(this.opponentNinja.special.damage);
-    }
+    //Opponent receives damage
+    this.opponentNinja.health.remove(this.playerAction.damage - this.opponentAction.defence);
 
     let isPlayerDead = this.playerNinja.health.now <= 0;
     let isPlayerOutOfChakra = this.playerNinja.chakra.now <= 0;
@@ -192,32 +144,20 @@ export class FightComponent implements OnInit {
     //Next turn
     setTimeout(() => {
       this.turn("player");
-    }, 4000)
+    }, 2000)
   }
 
-  playerPlays(type: string) {
-    if(type == "attack") {
-      this.playerChoice = this.playerNinja.attack;
-      this.playerNinja.attack.playSound();
-    } else if(type == "defence") {
-      this.playerChoice = this.playerNinja.defence;
-      this.playerNinja.defence.playSound();
-    } else if(type == "special") {
-      this.playerChoice = this.playerNinja.special;
-      this.playerNinja.special.playSound();
-    }
+  playerPlays(action: Action) {
+    this.playerAction = action;
+    action.playSound();
     this.turn("opponent");
   }
 
-  opponentPlays(type: string) {
-    if(type == "attack") {
-      this.opponentChoice = this.opponentNinja.attack;
-    } else if(type == "defence") {
-      this.opponentChoice = this.opponentNinja.defence;
-    } else if(type == "special") {
-      this.opponentChoice = this.opponentNinja.special;
-    } else if(type == "skip") {
-      this.opponentChoice = new Action('', '', 'skip');
+  opponentPlays(action: Action) {
+    if(action) {
+      this.opponentAction = action;
+    } else {
+      this.opponentAction = new Action('', '');
     }
     this.turn("decision");
   }

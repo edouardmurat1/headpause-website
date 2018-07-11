@@ -6,55 +6,80 @@ import { Injectable } from '@angular/core';
 export class NinjaService {
 
   ninjas: Ninja[];
+  unlocked_ninjas: Ninja[];
+  locked_ninjas: Ninja[];
+  actions: Action[];
 
   constructor() {
+    //Actions: Attacks
+    let punch = new Action('punch', '../assets/punch.png', 10);
+
+    let shuriken = new Action('shuriken', '../assets/shuriken.png', 10, 10);
+
+    let senbon = new Action('senbon', '../assets/senbon.png', 20);
+
+    let kunai = new Action('kunai', '../assets/kunai.png', 20);
+
+    let paperbomb = new Action('paperbomb', '../assets/paperbomb.png', 30, 0, 10);
+
+    //Actions: Defence
+    let transformation = new Action('transformation', '../assets/transformation.png', 0, 20, 10);
+
+    let substitution = new Action('substitution', '../assets/substitution.png', 0, 30, 20);
+
+    let sharingan = new Action('sharingan', '../assets/sharingan.png', 0, 40, 20);
+
+    let clone = new Action('clone', '../assets/clone.png', 0, 50, 30);
+
+    //Actions: special
+    let iruka_special = new Action('yell', '../assets/iruka-yell.jpg', 40, 0, 30);
+
+    let mizuki_special = new Action('deception', '../assets/mizuki-deception.jpg', 40, 0, 30);
+
+    let sasuke_special = new Action('fireball', '../assets/sasuke-fireball.jpg', 40, 0, 20);
+
+    let naruto_special = new Action('shadow clone', '../assets/naruto-shadowclone.jpg', 40, 0, 30);
+
+    let sakura_special = new Action('inner strength', '../assets/sakura-innerstrength.jpg', 40, 0, 20);
+
+    let kakashi_special = new Action('chidori', '../assets/kakashi-chidori.jpg', 50, 0, 30);
+
+    let zabuza_special = new Action('mist', '../assets/zabuza-mist.jpg', 40, 0, 30);
+
+    let haku_special = new Action('ice mirrors', '../assets/haku-ice-mirrors.jpg', 50, 0, 30)
+
+    //Ninjas
     let iruka = new Ninja(1, 'Iruka', '../assets/iruka.png',
       new Health(100), new Chakra(100),
-      new Action('shuriken', '../assets/iruka-shuriken.jpg', 'attack', 10, 0),
-      new Action('human shield', '../assets/iruka-human-shield.jpg', 'defence', 0, 20),
-      new Action('yell', '../assets/iruka-yell.jpg', 'special', 30, 30));
+      [kunai,transformation,iruka_special]);
 
     let mizuki = new Ninja(2, 'Mizuki', '../assets/mizuki.png',
       new Health(100), new Chakra(100),
-      new Action('shuriken', '../assets/mizuki-shuriken.jpg', 'attack', 30, 10),
-      new Action('substitution', '../assets/substitution.jpg', 'defence', 0, 40),
-      new Action('deception', '../assets/mizuki-deception.jpg', 'special', 30, 30));
+      [kunai,transformation,mizuki_special]);
 
     let sasuke = new Ninja(3, 'Sasuke', '../assets/sasuke.png',
       new Health(100), new Chakra(80),
-      new Action('shuriken', '../assets/sasuke-shuriken.jpg', 'attack', 20, 10),
-      new Action('sharingan', '../assets/sasuke-sharingan.jpg', 'defence', 0, 30),
-      new Action('fireball', '../assets/sasuke-fireball.jpg', 'special', 40, 30));
+      [paperbomb,sharingan,sasuke_special]);
 
     let naruto = new Ninja(4, 'Naruto', '../assets/naruto.png',
       new Health(100), new Chakra(120),
-      new Action('punch', '../assets/naruto-punch.jpg', 'attack', 10, 0),
-      new Action('transformation', '../assets/naruto-transformation.jpg', 'defence', 0, 30),
-      new Action('shadow clone', '../assets/naruto-shadowclone.jpg', 'special', 30, 30));
+      [punch,transformation,naruto_special]);
 
     let sakura = new Ninja(5, 'Sakura', '../assets/sakura.png',
       new Health(120), new Chakra(100),
-      new Action('kunai', '../assets/sakura-kunai.jpg', 'attack', 20, 10),
-      new Action('substitution', '../assets/substitution.jpg', 'defence', 0, 30),
-      new Action('inner strength', '../assets/sakura-innerstrength.jpg', 'special', 30, 40));
+      [punch,substitution,sakura_special]);
 
     let kakashi = new Ninja(6, 'Kakashi', '../assets/kakashi.png',
-      new Health(80), new Chakra(80),
-      new Action('kunai', '../assets/kakashi-kunai.jpg', 'attack', 30, 10),
-      new Action('copy', '../assets/kakashi-copy.jpg', 'defence', 0, 30),
-      new Action('chidori', '../assets/kakashi-chidori.jpg', 'special', 40, 30));
+      new Health(80), new Chakra(90),
+      [paperbomb,sharingan,kakashi_special]);
 
     let zabuza = new Ninja(7, 'Zabuza', '../assets/zabuza.png',
       new Health(100), new Chakra(100),
-      new Action('sword', '../assets/zabuza-sword.jpg', 'attack', 10, 0),
-      new Action('water clone', '../assets/zabuza-water-clone.jpg', 'defence', 0, 30),
-      new Action('mist', '../assets/zabuza-mist.jpg', 'special', 40, 30));
+      [shuriken,clone,zabuza_special]);
 
     let haku = new Ninja(8, 'Haku', '../assets/haku.png',
       new Health(80), new Chakra(100),
-      new Action('senbon', '../assets/haku-senbon.jpg', 'attack', 20, 10),
-      new Action('disguise', '../assets/haku-disguise.jpg', 'defence', 0, 40),
-      new Action('ice mirrors', '../assets/haku-ice-mirrors.jpg', 'special', 50, 30));
+      [senbon,clone,haku_special]);
 
     this.ninjas = [
       iruka,
@@ -62,6 +87,20 @@ export class NinjaService {
       sasuke,
       naruto,
       sakura,
+      kakashi,
+      zabuza,
+      haku
+    ];
+
+    this.unlocked_ninjas = [
+      naruto
+    ];
+
+    this.locked_ninjas = [
+      sasuke,
+      sakura,
+      iruka,
+      mizuki,
       kakashi,
       zabuza,
       haku
@@ -102,6 +141,11 @@ export class NinjaService {
   getRandomNinja(): Ninja {
     return this.copy(this.ninjas[Math.floor(Math.random()*this.ninjas.length)]);
   }
+
+  unlockNextNinja() {
+    let ninja: Ninja = this.locked_ninjas.shift();
+    this.unlocked_ninjas.push(ninja);
+    console.log(this.unlocked_ninjas);
 }
 
 export class Ninja {
@@ -110,30 +154,31 @@ export class Ninja {
   image: string;
   health: Health;
   chakra: Chakra;
-  attack: Action;
-  defence: Action;
-  special: Action;
+  actions: Action[];
 
   constructor(
     id: number, name: string, image: string,
-    health: Health, chakra: Chakra,
-    attack: Action, defence: Action, special: Action) {
+    health: Health, chakra: Chakra, actions: Action[]) {
       this.id = id;
       this.name = name;
       this.image = image;
       this.health = health;
       this.chakra = chakra;
-      this.attack = attack;
-      this.defence = defence;
-      this.special = special;
+      this.actions = actions;
+  }
+
+  copy(o: any) {
+    var output, v, key;
+    output = Array.isArray(o) ? [] : {};
+    for (key in o) {
+      v = o[key];
+      output[key] = (typeof v === "object") ? this.copy(v) : v;
+    }
+    return output;
   }
 
   getActions(): Action[] {
-    let actions: Action[] = [];
-    actions.push(this.attack);
-    actions.push(this.defence);
-    actions.push(this.special);
-    return actions;
+    return this.copy(this.actions);
   }
 }
 
@@ -154,9 +199,11 @@ export class Health {
   };
 
   remove(n: number) {
-    this.now = this.now - n;
-    this.now = (this.now < 0)? 0 : this.now;
-    this.percent = this.now * 100 / this.max;
+    if(n > 0) {
+      this.now = this.now - n;
+      this.now = (this.now < 0)? 0 : this.now;
+      this.percent = this.now * 100 / this.max;
+    }
   };
 }
 
@@ -177,9 +224,11 @@ export class Chakra {
   };
 
   remove(n: number) {
-    this.now = this.now - n;
-    this.now = (this.now < 0)? 0 : this.now;
-    this.percent = this.now * 100 / this.max;
+    if(n > 0) {
+      this.now = this.now - n;
+      this.now = (this.now < 0)? 0 : this.now;
+      this.percent = this.now * 100 / this.max;
+    }
   };
 }
 
@@ -188,16 +237,16 @@ export class Action {
   image: string;
   type: string;
   damage: number;
+  defence: number;
   chakra: number;
   health: number;
 
-  constructor(name: string, image: string, type: string, damage = 0, chakra = 0, health = 0) {
+  constructor(name: string, image: string, damage = 0, defence = 0, chakra = 0) {
     this.name = name;
     this.image = image;
-    this.type = type;
     this.damage = damage;
+    this.defence = defence;
     this.chakra = chakra;
-    this.health = health;
   }
 
   playSound() {

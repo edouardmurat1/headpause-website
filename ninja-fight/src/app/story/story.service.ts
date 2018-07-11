@@ -8,6 +8,26 @@ export class StoryService {
 
   constructor(private ninjaService: NinjaService) { }
 
+  // Iruka, Mizuki, Naruto, Sasuke, Sakura, Kakashi, Zabuza, Haku
+  battles = [
+    new Battle(
+      1,
+      this.getNinjaByName('Mizuki')
+    ),
+    new Battle(
+      2,
+      this.getNinjaByName('Kakashi')
+    ),
+    new Battle(
+      3,
+      this.getNinjaByName('Zabuza')
+    ),
+    new Battle(
+      4,
+      this.getNinjaByName('Haku')
+    )
+  ];
+/*
   battles = [
     new Battle(
       1,
@@ -33,7 +53,7 @@ export class StoryService {
       5,
       this.getNinjasByName(['Naruto','Sasuke']),
       this.getNinjaByName('Haku'))
-  ];
+  ];*/
 
   getBattle(id: number): Battle {
     return this.battles[id-1];
@@ -54,12 +74,10 @@ export class StoryService {
 
 export class Battle {
   id: number;
-  players: Ninja[];
   enemy: Ninja;
 
-  constructor(id: number, players?: Ninja[], enemy?: Ninja) {
+  constructor(id: number, enemy?: Ninja) {
     this.id = id;
-    this.players = players;
     this.enemy = enemy;
   }
 }

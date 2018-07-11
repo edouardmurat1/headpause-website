@@ -25,7 +25,7 @@ export class NinjaSelectionComponent implements OnInit {
 
       const id = +this.route.snapshot.paramMap.get('id');
       this.battle = this.storyService.getBattle(id);
-      this.players = this.storyService.getBattle(id).players;
+      this.players = this.ninjaService.unlocked_ninjas;
       this.enemy = this.storyService.getBattle(id).enemy;
       console.log(this.storyService.getBattle(id));
   }

@@ -20,7 +20,8 @@ import { NinjaService, Ninja } from '../ninja/ninja.service';
 })
 export class PlayerSelectionComponent implements OnInit {
 
-  ninjas: Ninja[];
+  unlocked_ninjas: Ninja[];
+  all_ninjas: Ninja[];
   playerNinja: Ninja;
   opponentNinja: Ninja;
   playerSelected: boolean;
@@ -29,7 +30,8 @@ export class PlayerSelectionComponent implements OnInit {
   constructor(
     private ninjaService: NinjaService,
     private router: Router) {
-    this.ninjas = ninjaService.getNinjas();
+    this.unlocked_ninjas = ninjaService.unlocked_ninjas;
+    this.all_ninjas = ninjaService.getNinjas();
     this.playerSelected = false;
   }
 
