@@ -224,12 +224,9 @@
   flower2.init();
   flower3.init();
 
-  var animateWithScroll = function() {
-
-    var scroll = $(window).scrollTop();
-
-    //Animate flowers
-    if (!flowersAnimated && scroll > $("#services").offset().top - 60) {
+  //Animate flowers when in viewport
+  var flowersWP = $('#services').waypoint(function(direction) {
+    if (!flowersAnimated) {
       flower1.animate();
       setTimeout(function(){
         flower2.animate();
@@ -239,13 +236,25 @@
       }, 1000);
       flowersAnimated = true;
     }
-    //Animate coach section
-    else if (!coachAnimated && scroll > $("#coach").offset().top - 60) {
-      $("#coach img").addClass("shake");
+  });
+
+  //Animate coach section when in viewport
+  var coachWP = $('#coach').waypoint(function(direction) {
+    if (!coachAnimated) {
+      $('#coach samp').each(function (index) {
+        var item = $(this);
+        setTimeout(function () {
+          item.addClass('to-secondary-color');
+        }, index * 250);
+      });
+      //$("#coach samp").addClass("bolder");
       coachAnimated = true;
     }
-    //Animate testimonies
-    else if (!testimoniesAnimated && scroll > $("#testimonies").offset().top - 60) {
+  });
+
+  //Animate testimonies when in viewport
+  var testimoniesWP = $('#testimonies').waypoint(function(direction) {
+    if (!testimoniesAnimated) {
       $("#testimony1").addClass("slide-left");
       setTimeout(function(){
         $("#testimony2").addClass("slide-right");
@@ -255,14 +264,6 @@
       }, 1000);
       testimoniesAnimated = true;
     }
-  };
-
-  $(window).scroll(function() {
-    // Collapse the navbar when page is scrolled
-    navbarCollapse();
-
-    // Animate svgs as page is scrolled
-    animateWithScroll();
   });
 
 })(jQuery); // End of use strict
