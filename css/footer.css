@@ -43,6 +43,58 @@
 	margin-left: -1em;
 }
 
+#testimony1 {
+    opacity: 0;
+}
+#testimony2 {
+    opacity: 0;
+}
+#testimony3 {
+    opacity: 0;
+}
+
+@keyframes slide-left {
+  from {
+    opacity: 0;
+    position: relative;
+    left: 1000px;
+  }
+
+  to {
+    opacity: 1;
+    position: relative;
+    left: 0;
+  }
+}
+
+.slide-left {
+  animation-name: slide-left;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-right {
+  from {
+    opacity: 0;
+    position: relative;
+    left: -1000px;
+  }
+
+  to {
+    opacity: 1;
+    position: relative;
+    left: 0;
+  }
+}
+
+.slide-right {
+  animation-name: slide-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
 br {
   line-height: 150%;
 }
