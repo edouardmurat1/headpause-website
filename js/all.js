@@ -279,24 +279,34 @@
   });
 
   //Animate contact section when in viewport
-  var contactWP = $('#contact').waypoint(function(direction) {
-    setInterval(function(){
-      $('#email').removeClass("fa-envelope");
-      $('#email').addClass("fa-envelope-open");
-      setTimeout(function(){
-        $('#email').removeClass("fa-envelope-open");
-        $('#email').addClass("fa-envelope");
-      }, 500);
+  var envelopeFn = function() {
+    $('#email').removeClass("fa-envelope");
+    $('#email').addClass("fa-envelope-open");
+    setTimeout(function(){
+      $('#email').removeClass("fa-envelope-open");
+      $('#email').addClass("fa-envelope");
     }, 1000);
+  }
 
-    setInterval(function(){
-      $('.fa-phone').addClass("shake");
-      setTimeout(function(){
-        $('.fa-phone').removeClass("shake");
-      }, 500);
+  var phoneFn = function() {
+    $('.fa-phone').addClass("shake");
+    setTimeout(function(){
+      $('.fa-phone').removeClass("shake");
     }, 1000);
+  }
+
+  var contactWP = $('#contact').waypoint(function(direction) {
+    envelopeFn();
+    setInterval(function(){
+      envelopeFn();
+    }, 2000);
+    
+    phoneFn();
+    setInterval(function(){
+      phoneFn();
+    }, 2000);
   }, {
-    offset: '25%'
+    offset: '50%'
   });
 
   $("#flower-stage-1").hover(
