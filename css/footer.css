@@ -60,7 +60,6 @@
     left: 0;
   }
 }
-
 .slide-left {
   animation-name: slide-left;
   animation-duration: 1s;
@@ -81,12 +80,22 @@
     left: 0;
   }
 }
-
 .slide-right {
   animation-name: slide-right;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 0px); }
+  50% { transform: translate(-1px, 0px); }
+  100% { transform: translate(1px, 0px); }
+}
+.shake {
+  animation-name: shake;
+  animation-duration: .2s;
+  animation-iteration-count:infinite;
 }
 
 br {

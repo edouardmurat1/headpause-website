@@ -278,6 +278,133 @@
     offset: '25%'
   });
 
+  //Animate contact section when in viewport
+  var contactWP = $('#contact').waypoint(function(direction) {
+    setInterval(function(){
+      $('#email').removeClass("fa-envelope");
+      $('#email').addClass("fa-envelope-open");
+      setTimeout(function(){
+        $('#email').removeClass("fa-envelope-open");
+        $('#email').addClass("fa-envelope");
+      }, 500);
+    }, 1000);
+
+    setInterval(function(){
+      $('.fa-phone').addClass("shake");
+      setTimeout(function(){
+        $('.fa-phone').removeClass("shake");
+      }, 500);
+    }, 1000);
+  }, {
+    offset: '25%'
+  });
+
+  $("#flower-stage-1").hover(
+    function() {
+      flower1.petal1.attr({
+        fill: "#F0F8EA"
+      });
+      flower1.petal2.attr({
+        fill: "#F0F8EA"
+      });
+      flower1.petal3.attr({
+        fill: "#F0F8EA"
+      });
+      flower1.petal4.attr({
+        fill: "#F0F8EA"
+      });
+      flower1.petal5.attr({
+        fill: "#F0F8EA"
+      });
+    }, function() {
+      flower1.petal1.attr({
+        fill: "#89B829"
+      });
+      flower1.petal2.attr({
+        fill: "#89B829"
+      });
+      flower1.petal3.attr({
+        fill: "#89B829"
+      });
+      flower1.petal4.attr({
+        fill: "#89B829"
+      });
+      flower1.petal5.attr({
+        fill: "#89B829"
+      });
+    }
+  );
+  $("#flower-stage-2").hover(
+    function() {
+      flower2.petal1.attr({
+        fill: "#F0F8EA"
+      });
+      flower2.petal2.attr({
+        fill: "#F0F8EA"
+      });
+      flower2.petal3.attr({
+        fill: "#F0F8EA"
+      });
+      flower2.petal4.attr({
+        fill: "#F0F8EA"
+      });
+      flower2.petal5.attr({
+        fill: "#F0F8EA"
+      });
+    }, function() {
+      flower2.petal1.attr({
+        fill: "#89B829"
+      });
+      flower2.petal2.attr({
+        fill: "#89B829"
+      });
+      flower2.petal3.attr({
+        fill: "#89B829"
+      });
+      flower2.petal4.attr({
+        fill: "#89B829"
+      });
+      flower2.petal5.attr({
+        fill: "#89B829"
+      });
+    }
+  );
+  $("#flower-stage-3").hover(
+    function() {
+      flower3.petal1.attr({
+        fill: "#F0F8EA"
+      });
+      flower3.petal2.attr({
+        fill: "#F0F8EA"
+      });
+      flower3.petal3.attr({
+        fill: "#F0F8EA"
+      });
+      flower3.petal4.attr({
+        fill: "#F0F8EA"
+      });
+      flower3.petal5.attr({
+        fill: "#F0F8EA"
+      });
+    }, function() {
+      flower3.petal1.attr({
+        fill: "#89B829"
+      });
+      flower3.petal2.attr({
+        fill: "#89B829"
+      });
+      flower3.petal3.attr({
+        fill: "#89B829"
+      });
+      flower3.petal4.attr({
+        fill: "#89B829"
+      });
+      flower3.petal5.attr({
+        fill: "#89B829"
+      });
+    }
+  );
+
   $(window).scroll(function() {
     // Collapse the navbar when page is scrolled
     navbarCollapse();

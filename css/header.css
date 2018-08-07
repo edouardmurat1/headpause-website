@@ -65,6 +65,34 @@ body {
   color: #212529!important;
 }
 
+.border-primary {
+  border: 5px solid #89B829!important;
+  border-radius: 50%!important;
+}
+.border-secondary {
+  border: 5px solid #FF6232!important;
+  border-radius: 50%!important;
+}
+.border-light-primary {
+  border: 5px solid #C9EC83!important;
+  border-radius: 50%!important;
+}
+.border-light-secondary {
+  border: 5px solid #FFA98F!important;
+  border-radius: 50%!important;
+}
+.border-light {
+  border: 5px solid #F0F8EA!important;
+  border-radius: 50%!important;
+}
+.border-dark {
+  border: 5px solid #212529!important;
+  border-radius: 50%!important;
+}
+.border-small {
+  border-width: 3px!important;
+}
+
 hr {
   border-color: #89B829;
   max-width: 50px;
@@ -273,27 +301,26 @@ header.masthead p {
 }
 
 .btn.bg-light:hover {
-  background-color: #C9EC83!important;
+  background-color: #FF6232!important;
 }
 
+@keyframes flower {
+    from {
+      transform: scale(.9,.9);
+    }
+    to {
+      transform: scale(1,1);
+    }
+}
 .flower {
   width: 199px;
   height: 199px;
-}
+  -webkit-box-shadow: 0px 0px 0px 5px #C9EC83;
+  -moz-box-shadow: 0px 0px 0px 5px #C9EC83;
+  box-shadow: 0px 0px 0px 5px #C9EC83;
 
-@keyframes glow {
-    from {
-    }
-    to {
-      -webkit-box-shadow: 0px 0px 15px 5px #ffffff;
-      -moz-box-shadow: 0px 0px 15px 5px #ffffff;
-      box-shadow: 0px 0px 15px 5px #ffffff;
-    }
-}
-
-.glow {
-  animation-name: glow;
-  animation-duration: 1s;
+  animation-name: flower;
+  animation-duration: 2s;
   animation-direction: alternate;
   animation-iteration-count:infinite;
   animation-timing-function: ease-in-out;
