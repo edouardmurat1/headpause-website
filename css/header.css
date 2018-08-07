@@ -113,6 +113,8 @@ section {
 
 .section-heading {
   margin-top: 0;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 ::-moz-selection {
@@ -329,22 +331,14 @@ header.masthead p {
   color: #FF6232 !important;
 }
 
-#facesvg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: -45%;
-}
-
-@media only screen and (device-width:768px){
-  #facesvg {
-    top: 50%;
+@media (max-width:575.98px){
+  #mainNav .navbar-brand {
+    font-size: .7rem;
   }
 }
 
 @keyframes to-secondary-color {
-  0% { color: #212529; font-size: 1em; }
-  100% { color: #FF6232; font-size: 1.1em; }
+  100% { color: #FF6232; font-weight: bold; }
 }
 
 .to-secondary-color {

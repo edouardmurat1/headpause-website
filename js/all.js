@@ -236,6 +236,8 @@
       }, 1000);
       flowersAnimated = true;
     }
+  }, {
+    offset: '25%'
   });
 
   //Animate coach section when in viewport
@@ -245,11 +247,13 @@
         var item = $(this);
         setTimeout(function () {
           item.addClass('to-secondary-color');
-        }, index * 250);
+        }, index * 500);
       });
       //$("#coach samp").addClass("bolder");
       coachAnimated = true;
     }
+  }, {
+    offset: '0'
   });
 
   //Animate testimonies when in viewport
@@ -258,12 +262,25 @@
       $("#testimony1").addClass("slide-left");
       setTimeout(function(){
         $("#testimony2").addClass("slide-right");
-      }, 500);
+      }, 250);
       setTimeout(function(){
         $("#testimony3").addClass("slide-left");
+      }, 500);
+      setTimeout(function(){
+        $("#testimony4").addClass("slide-right");
+      }, 750);
+      setTimeout(function(){
+        $("#testimony5").addClass("slide-left");
       }, 1000);
       testimoniesAnimated = true;
     }
+  }, {
+    offset: '25%'
+  });
+
+  $(window).scroll(function() {
+    // Collapse the navbar when page is scrolled
+    navbarCollapse();
   });
 
 })(jQuery); // End of use strict

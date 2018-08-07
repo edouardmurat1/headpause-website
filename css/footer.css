@@ -43,13 +43,7 @@
 	margin-left: -1em;
 }
 
-#testimony1 {
-    opacity: 0;
-}
-#testimony2 {
-    opacity: 0;
-}
-#testimony3 {
+.testimony {
     opacity: 0;
 }
 
