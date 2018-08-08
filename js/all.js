@@ -342,6 +342,12 @@
       $('#service1_caret i').addClass("fa-caret-down");
     }
   });
+  $('#service1_details').on('shown.bs.collapse', function() {
+    $('html, body').animate({
+      scrollTop: ($('#service1_details').offset().top -
+      $(window).height() + $('#service1_details').height() + 50)
+    }, 1000, "easeInOutExpo");
+  });
 
   $('#service2_caret').click(function() {
     $('#service2_details').collapse('toggle');
@@ -353,6 +359,12 @@
       $('#service2_caret i').addClass("fa-caret-down");
     }
   });
+  $('#service2_details').on('shown.bs.collapse', function() {
+    $('html, body').animate({
+      scrollTop: ($('#service2_details').offset().top -
+      $(window).height() + $('#service2_details').height() + 50)
+    }, 1000, "easeInOutExpo");
+  });
 
   $('#service3_caret').click(function() {
     $('#service3_details').collapse('toggle');
@@ -363,6 +375,12 @@
       $('#service3_caret i').removeClass("fa-caret-up");
       $('#service3_caret i').addClass("fa-caret-down");
     }
+  });
+  $('#service3_details').on('shown.bs.collapse', function() {
+    $('html, body').animate({
+      scrollTop: ($('#service3_details').offset().top -
+      $(window).height() + $('#service3_details').height() + 50)
+    }, 1000, "easeInOutExpo");
   });
 
 })(jQuery); // End of use strict
