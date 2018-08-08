@@ -232,7 +232,7 @@
       flower1Animated = true;
     }
   }, {
-    offset: '40%'
+    offset: '50%'
   });
 
   //Animate 2nd flower when in viewport
@@ -242,7 +242,7 @@
       flower2Animated = true;
     }
   }, {
-    offset: '40%'
+    offset: '50%'
   });
 
   //Animate 3rd flower when in viewport
@@ -252,7 +252,7 @@
       flower3Animated = true;
     }
   }, {
-    offset: '40%'
+    offset: '50%'
   });
 
 
