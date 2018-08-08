@@ -364,6 +364,12 @@ header.masthead p {
   }
 }
 
+@media (min-width: 576px) and (max-width:767.98px){
+  #mainNav .navbar-brand {
+    font-size: .8rem;
+  }
+}
+
 @keyframes to-secondary-color {
   100% { color: #FF6232; font-weight: bold; }
 }
