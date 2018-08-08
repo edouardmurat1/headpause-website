@@ -360,7 +360,7 @@ header.masthead p {
 
 @media (max-width:575.98px){
   #mainNav .navbar-brand {
-    font-size: .7rem;
+    font-size: .6rem;
   }
 }
 
@@ -371,4 +371,23 @@ header.masthead p {
 .to-secondary-color {
   animation: to-secondary-color 1s;
   animation-fill-mode: forwards;
+}
+
+.fa-caret-down {
+  color: #F0F8EA;
+}
+.fa-caret-down:hover {
+  color: #FF6232;
+  cursor: pointer;
+}
+.fa-caret-up {
+  color: #F0F8EA;
+}
+.fa-caret-up:hover {
+  color: #FF6232;
+  cursor: pointer;
+}
+
+.big {
+  font-size: 1.2rem;
 }

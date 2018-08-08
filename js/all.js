@@ -299,11 +299,9 @@
     envelopeFn();
     setInterval(function(){
       envelopeFn();
-    }, 2000);
-    
-    phoneFn();
-    setInterval(function(){
-      phoneFn();
+      setTimeout(function(){
+        phoneFn();
+      }, 1000);
     }, 2000);
   }, {
     offset: '50%'
@@ -418,6 +416,39 @@
   $(window).scroll(function() {
     // Collapse the navbar when page is scrolled
     navbarCollapse();
+  });
+
+  $('#service1_caret').click(function() {
+    $('#service1_details').collapse('toggle');
+    if($('#service1_caret i').hasClass("fa-caret-down")) {
+      $('#service1_caret i').removeClass("fa-caret-down");
+      $('#service1_caret i').addClass("fa-caret-up");
+    } else {
+      $('#service1_caret i').removeClass("fa-caret-up");
+      $('#service1_caret i').addClass("fa-caret-down");
+    }
+  });
+
+  $('#service2_caret').click(function() {
+    $('#service2_details').collapse('toggle');
+    if($('#service2_caret i').hasClass("fa-caret-down")) {
+      $('#service2_caret i').removeClass("fa-caret-down");
+      $('#service2_caret i').addClass("fa-caret-up");
+    } else {
+      $('#service2_caret i').removeClass("fa-caret-up");
+      $('#service2_caret i').addClass("fa-caret-down");
+    }
+  });
+
+  $('#service3_caret').click(function() {
+    $('#service3_details').collapse('toggle');
+    if($('#service3_caret i').hasClass("fa-caret-down")) {
+      $('#service3_caret i').removeClass("fa-caret-down");
+      $('#service3_caret i').addClass("fa-caret-up");
+    } else {
+      $('#service3_caret i').removeClass("fa-caret-up");
+      $('#service3_caret i').addClass("fa-caret-down");
+    }
   });
 
 })(jQuery); // End of use strict
