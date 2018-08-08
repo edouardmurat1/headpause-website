@@ -44,10 +44,6 @@
   navbarCollapse();
 
   //Snap svg animations
-  var flowersAnimated = false;
-  var coachAnimated = false;
-  var testimoniesAnimated = false;
-
   var flower1 = {
     s: null,
     petal1: null,
@@ -224,21 +220,43 @@
   flower2.init();
   flower3.init();
 
-  //Animate flowers when in viewport
-  var flowersWP = $('#services').waypoint(function(direction) {
-    if (!flowersAnimated) {
+
+  var flower1Animated = false;
+  var flower2Animated = false;
+  var flower3Animated = false;
+
+  //Animate 1st flower when in viewport
+  var flower1WP = $('#flower-stage-1').waypoint(function(direction) {
+    if (!flower1Animated) {
       flower1.animate();
-      setTimeout(function(){
-        flower2.animate();
-      }, 700);
-      setTimeout(function(){
-        flower3.animate();
-      }, 1400);
-      flowersAnimated = true;
+      flower1Animated = true;
     }
   }, {
-    offset: '25%'
+    offset: '40%'
   });
+
+  //Animate 2nd flower when in viewport
+  var flower2WP = $('#flower-stage-2').waypoint(function(direction) {
+    if (!flower2Animated) {
+      flower2.animate();
+      flower2Animated = true;
+    }
+  }, {
+    offset: '40%'
+  });
+
+  //Animate 3rd flower when in viewport
+  var flower3WP = $('#flower-stage-3').waypoint(function(direction) {
+    if (!flower3Animated) {
+      flower3.animate();
+      flower3Animated = true;
+    }
+  }, {
+    offset: '40%'
+  });
+
+
+  var coachAnimated = false;
 
   //Animate coach section when in viewport
   var coachWP = $('#coach').waypoint(function(direction) {
@@ -255,6 +273,8 @@
   }, {
     offset: '0'
   });
+
+  var testimoniesAnimated = false;
 
   //Animate testimonies when in viewport
   var testimoniesWP = $('#testimonies').waypoint(function(direction) {
