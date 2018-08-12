@@ -370,13 +370,28 @@ header.masthead p {
   }
 }
 
+@keyframes to-primary-color {
+  100% { color: #89B829; font-weight: bold; }
+}
+.to-primary-color {
+  animation: to-primary-color 1s;
+  animation-fill-mode: forwards;
+}
+
 @keyframes to-secondary-color {
   100% { color: #FF6232; font-weight: bold; }
 }
-
 .to-secondary-color {
   animation: to-secondary-color 1s;
   animation-fill-mode: forwards;
+}
+
+#services {
+  background: url(../img/grass.png);
+}
+
+#testimonies {
+  background: url(../img/testimony.png);
 }
 
 .fa-caret-down {
@@ -396,4 +411,8 @@ header.masthead p {
 
 .big {
   font-size: 1.2rem;
+}
+
+#quote {
+  font-family: 'Gloria Hallelujah', cursive;
 }

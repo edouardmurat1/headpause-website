@@ -221,6 +221,24 @@
   flower3.init();
 
 
+  var aboutAnimated = false;
+
+  //Animate coach section when in viewport
+  var aboutWP = $('#about').waypoint(function(direction) {
+    if (!aboutAnimated) {
+      $('#about samp').each(function (index) {
+        var item = $(this);
+        setTimeout(function () {
+          item.addClass('to-primary-color');
+        }, index * 500);
+      });
+      //$("#coach samp").addClass("bolder");
+      aboutAnimated = true;
+    }
+  }, {
+    offset: '50%'
+  });
+
   var flower1Animated = false;
   var flower2Animated = false;
   var flower3Animated = false;
@@ -343,9 +361,16 @@
     }
   });
   $('#service1_details').on('shown.bs.collapse', function() {
+    var target;
+    if($('#service1_details').height() > $(window).height()) {
+      target = $('#service1_caret').offset().top -
+      $('#service1_caret').height() - 50;
+    } else {
+      target = $('#service1_details').offset().top -
+      $(window).height() + $('#service1_details').height() + 50
+    }
     $('html, body').animate({
-      scrollTop: ($('#service1_details').offset().top -
-      $(window).height() + $('#service1_details').height() + 50)
+      scrollTop: target
     }, 1000, "easeInOutExpo");
   });
 
@@ -360,9 +385,16 @@
     }
   });
   $('#service2_details').on('shown.bs.collapse', function() {
+    var target;
+    if($('#service2_details').height() > $(window).height()) {
+      target = $('#service2_caret').offset().top -
+      $('#service2_caret').height() - 50;
+    } else {
+      target = $('#service2_details').offset().top -
+      $(window).height() + $('#service2_details').height() + 50
+    }
     $('html, body').animate({
-      scrollTop: ($('#service2_details').offset().top -
-      $(window).height() + $('#service2_details').height() + 50)
+      scrollTop: target
     }, 1000, "easeInOutExpo");
   });
 
@@ -377,9 +409,16 @@
     }
   });
   $('#service3_details').on('shown.bs.collapse', function() {
+    var target;
+    if($('#service3_details').height() > $(window).height()) {
+      target = $('#service3_caret').offset().top -
+      $('#service3_caret').height() - 50;
+    } else {
+      target = $('#service3_details').offset().top -
+      $(window).height() + $('#service3_details').height() + 50
+    }
     $('html, body').animate({
-      scrollTop: ($('#service3_details').offset().top -
-      $(window).height() + $('#service3_details').height() + 50)
+      scrollTop: target
     }, 1000, "easeInOutExpo");
   });
 
