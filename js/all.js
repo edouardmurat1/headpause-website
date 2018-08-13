@@ -410,9 +410,12 @@
       target = $('#service1_details').offset().top -
       $(window).height() + $('#service1_details').height() + 50
     }
-    $('html, body').animate({
-      scrollTop: target
-    }, 1000, "easeInOutExpo");
+
+    if(target > $('html, body').scrollTop()) {
+      $('html, body').animate({
+        scrollTop: target
+      }, 1000, "easeInOutExpo");
+    }
   });
 
   $('#service2_caret').click(function() {
@@ -434,9 +437,12 @@
       target = $('#service2_details').offset().top -
       $(window).height() + $('#service2_details').height() + 50
     }
-    $('html, body').animate({
-      scrollTop: target
-    }, 1000, "easeInOutExpo");
+
+    if(target > $('html, body').scrollTop()) {
+      $('html, body').animate({
+        scrollTop: target
+      }, 1000, "easeInOutExpo");
+    }
   });
 
   $('#service3_caret').click(function() {
@@ -458,9 +464,12 @@
       target = $('#service3_details').offset().top -
       $(window).height() + $('#service3_details').height() + 50
     }
-    $('html, body').animate({
-      scrollTop: target
-    }, 1000, "easeInOutExpo");
+    
+    if(target > $('html, body').scrollTop()) {
+      $('html, body').animate({
+        scrollTop: target
+      }, 1000, "easeInOutExpo");
+    }
   });
 
 })(jQuery); // End of use strict
