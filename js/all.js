@@ -403,7 +403,7 @@
   });
   $('#service1_details').on('shown.bs.collapse', function() {
     var target;
-    if($('#service1_details').height() > $(window).height()) {
+    if($('#service1_details').height() + 50 > $(window).height()) {
       target = $('#service1_caret').offset().top -
       $('#service1_caret').height() - 50;
     } else {
@@ -430,7 +430,7 @@
   });
   $('#service2_details').on('shown.bs.collapse', function() {
     var target;
-    if($('#service2_details').height() > $(window).height()) {
+    if($('#service2_details').height() + 50 > $(window).height()) {
       target = $('#service2_caret').offset().top -
       $('#service2_caret').height() - 50;
     } else {
@@ -457,14 +457,14 @@
   });
   $('#service3_details').on('shown.bs.collapse', function() {
     var target;
-    if($('#service3_details').height() > $(window).height()) {
+    if($('#service3_details').height() + 50 > $(window).height()) {
       target = $('#service3_caret').offset().top -
       $('#service3_caret').height() - 50;
     } else {
       target = $('#service3_details').offset().top -
       $(window).height() + $('#service3_details').height() + 50
     }
-    
+
     if(target > $('html, body').scrollTop()) {
       $('html, body').animate({
         scrollTop: target
