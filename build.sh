@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # combine css and js files
-#cat vendor/bootstrap/css/bootstrap.css css/agency.css vendor/font-awesome/css/font-awesome.css css/fonts.css > css/all.css
-#cat js/vendors.min.js js/agency.js > js/all.js
+# head css
+cat vendor/bootstrap/css/bootstrap.css css/header.css > css/head.css
+
+cat vendor/jquery/jquery.js vendor/bootstrap/js/bootstrap.bundle.js vendor/jquery-easing/jquery.easing.js vendor/jquery-waypoints/jquery.waypoints.js vendor/snapsvg/snap.svg.js js/main.js > js/all.js
 
 # minify css and js
-minify -o css/header.min.css css/header.css
+minify -o css/head.min.css css/head.css
 minify -o css/footer.min.css css/footer.css
+
 minify -o js/all.min.js js/all.js
