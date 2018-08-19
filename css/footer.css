@@ -1,6 +1,6 @@
 .footer {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 56px);
+  padding-top: 6rem;
+  padding-bottom: calc(6rem - 56px);
   background-image: url('../img/footer.jpg');
   background-position: center center;
   -webkit-background-size: cover;
