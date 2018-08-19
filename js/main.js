@@ -1,11 +1,5 @@
 (function($) {
   "use strict"; // Start of use strict
-  $(document).ready(function() {
-    $('.lazyload' ).each(function() {
-      //* set the img src from data-src
-      $(this).attr('src', $(this).attr('data-src'));
-    });
-  });
 
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
