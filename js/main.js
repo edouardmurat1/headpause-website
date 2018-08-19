@@ -338,18 +338,18 @@
   //Animate testimonies when in viewport
   var testimoniesWP = $('#testimonies').waypoint(function(direction) {
     if (!testimoniesAnimated) {
-      $("#testimony1").addClass("slide-left");
+      $("#testimony1").addClass("slide-right");
       setTimeout(function(){
         $("#testimony2").addClass("slide-right");
       }, 250);
       setTimeout(function(){
-        $("#testimony3").addClass("slide-left");
+        $("#testimony3").addClass("slide-right");
       }, 500);
       setTimeout(function(){
         $("#testimony4").addClass("slide-right");
       }, 750);
       setTimeout(function(){
-        $("#testimony5").addClass("slide-left");
+        $("#testimony5").addClass("slide-right");
       }, 1000);
       testimoniesAnimated = true;
     }
