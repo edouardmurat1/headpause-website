@@ -397,7 +397,9 @@
   });
   $('#service1_details').on('shown.bs.collapse', function() {
     var target;
-    if($('#service1_details').height() + 50 > $(window).height()) {
+    console.lo
+
+    if($('#service1_details').height() + 100 > $(window).height()) {
       target = $('#service1_caret').offset().top -
       $('#service1_caret').height() - 50;
     } else {
@@ -424,7 +426,7 @@
   });
   $('#service2_details').on('shown.bs.collapse', function() {
     var target;
-    if($('#service2_details').height() + 50 > $(window).height()) {
+    if($('#service2_details').height() + 100 > $(window).height()) {
       target = $('#service2_caret').offset().top -
       $('#service2_caret').height() - 50;
     } else {
@@ -451,7 +453,7 @@
   });
   $('#service3_details').on('shown.bs.collapse', function() {
     var target;
-    if($('#service3_details').height() + 50 > $(window).height()) {
+    if($('#service3_details').height() + 100 > $(window).height()) {
       target = $('#service3_caret').offset().top -
       $('#service3_caret').height() - 50;
     } else {
