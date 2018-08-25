@@ -178,10 +178,13 @@ img::-moz-selection {
 
 #mainNav .navbar-brand {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.25rem;
   text-transform: uppercase;
   color: #89B829;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+#mainNav .navbar-brand span {
+  font-size: 1rem;
 }
 
 #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
@@ -360,13 +363,19 @@ header.masthead p {
 
 @media (max-width:575.98px){
   #mainNav .navbar-brand {
-    font-size: .6rem;
+    font-size: 1rem;
+  }
+  #mainNav .navbar-brand span {
+    display: none;
   }
 }
 
 @media (min-width: 576px) and (max-width:767.98px){
   #mainNav .navbar-brand {
-    font-size: .8rem;
+    font-size: 1rem;
+  }
+  #mainNav .navbar-brand span {
+    font-size: .9rem;
   }
 }
 
