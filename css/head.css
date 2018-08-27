@@ -9211,6 +9211,11 @@ img::-moz-selection {
   }
 }
 
+#mainNav.stay-shrinked {
+  border-bottom: 1px solid rgba(33, 37, 41, 0.1) !important;
+  background-color: #F0F8EA !important;
+}
+
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
@@ -9405,4 +9410,11 @@ header.masthead p {
 
 #quote {
   font-family: 'Gloria Hallelujah', cursive;
+}
+
+.modal-body a {
+  color: #89B829!important;
+}
+p.my-0 strong {
+  color: #89B829!important;
 }
