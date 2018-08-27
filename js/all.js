@@ -26279,6 +26279,14 @@ return Snap;
     }
   });
 
+  // replace share-buttons with html
+  $("[data-share-buttons]").load("/templates/share-buttons.html", function() {
+    var url = ($(this).data("share-buttons")) ? $(this).data("share-buttons") : window.location;
+    $(this).find("a").each(function(){
+      this.href = this.href.replace('#currentUrl', url);
+    });
+  });
+
   // Closes responsive menu when a scroll trigger link is clicked
   $('.js-scroll-trigger').click(function() {
     $('.navbar-collapse').collapse('hide');

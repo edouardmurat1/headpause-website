@@ -9240,6 +9240,10 @@ header.masthead p {
   font-weight: 300;
 }
 
+header.mt-5 {
+  margin-top: 5rem!important;
+}
+
 @media (min-width: 768px) {
   header.masthead p {
     font-size: 1.15rem;
@@ -9413,8 +9417,25 @@ header.masthead p {
 }
 
 .modal-body a {
-  color: #89B829!important;
+  color: #89B829;
 }
 p.my-0 strong {
   color: #89B829!important;
+}
+
+.btn-social-icon {
+  color: #212529!important;
+  font-size: 1rem!important;
+}
+.btn-social-icon:hover {
+  color: #FF6232!important;
+}
+
+#share-buttons {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  background-color: #C9EC83!important;
 }
