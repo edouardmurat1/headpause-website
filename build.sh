@@ -4,7 +4,7 @@
 # head css
 cat vendor/bootstrap/css/bootstrap.css css/header.css > css/head.css
 
-cat vendor/jquery/jquery.js vendor/bootstrap/js/bootstrap.bundle.js vendor/jquery-easing/jquery.easing.js vendor/jquery-waypoints/jquery.waypoints.js vendor/snapsvg/snap.svg.js js/main.js > js/all.js
+cat vendor/jquery/jquery.js vendor/bootstrap/js/bootstrap.bundle.js vendor/jquery-lazy/jquery.lazy.min.js vendor/jquery-easing/jquery.easing.js vendor/jquery-waypoints/jquery.waypoints.js vendor/snapsvg/snap.svg.js js/main.js js/entreprise.js > js/all.js
 
 # minify css and js
 minify -o css/head.min.css css/head.css

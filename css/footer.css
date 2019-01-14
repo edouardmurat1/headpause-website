@@ -81,3 +81,113 @@
 br {
   line-height: 150%;
 }
+
+#bubbles1,
+#bubbles2 {
+  position: absolute;
+}
+
+@media (min-width: 768px) {
+  .down-one-row {
+    top: 250px;
+  }
+  .up-one-row {
+    top: -250px;
+  }
+}
+
+.odometer {
+  font-size: 4.5rem;
+}
+.odometer-minus .odometer-inside:before {
+  content: "-"
+}
+.odometer-plus .odometer-inside:before {
+  content: "+"
+}
+.odometer-percentage .odometer-inside:after {
+  content: " %"
+}
+.odometer-hour .odometer-inside:after {
+  content: " h"
+}
+.odometer-money .odometer-inside:after {
+    content: " $"
+}
+.odometer-million .odometer-inside:after {
+    content: " M$"
+}
+.odometer-billion .odometer-inside:after {
+    content: " G$"
+}
+.odometer-billion-en .odometer-inside:after {
+    content: " B$"
+}
+
+#servicecorpo1 > div {
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://www.recrutaresiselectie.ro/wp-content/uploads/2015/01/activitati-de-vineri-la-birou11.jpg');
+}
+#servicecorpo2 > div {
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX3428648.jpg');
+}
+#servicecorpo3 > div {
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://coral-distr.com/images/%D0%91%D1%83%D1%82%D0%B0%D0%BA%D0%BE%D0%B2%D0%B0/Stress3.jpg');
+}
+#servicecorpo4 > div {
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://www.cocktail-db.com/stat/img/640/KinkyPinky.jpg');
+}
+#servicecorpo5 > div {
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('http://biblio.bas-rhin.fr/eCommunityImages/68E30C82-1D65-4EF1-823A-81814F644A3F/253/w1920wh1080h/bdbr-boite-a-outils.jpg');
+}
+#servicecorpo6 > div {
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://www.besthealthmag.ca/wp-content/uploads/sites/16/2011/11/Meditation-For-Beginners.jpg');
+}
+
+#servicecorpo1 > div, #servicecorpo2 > div,
+#servicecorpo3 > div, #servicecorpo4 > div,
+#servicecorpo5 > div, #servicecorpo6 > div {
+  background-size: cover;
+  -webkit-transition: background-color .5s;
+  -moz-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+/* #servicecorpo1 > div:hover, #servicecorpo2 > div:hover,
+#servicecorpo3 > div:hover, #servicecorpo4 > div:hover,
+#servicecorpo5 > div:hover, #servicecorpo6 > div:hover {
+  background-color: #FFA98F;
+  background-image: none;
+  cursor: pointer;
+}
+
+#servicecorpo1.focused > div, #servicecorpo2.focused > div,
+#servicecorpo3.focused > div, #servicecorpo4.focused > div,
+#servicecorpo5.focused > div, #servicecorpo6.focused > div {
+  background-color: #FFA98F;
+  background-image: none;
+} */
+
+.font-weight-thick {
+  font-weight: 600;
+}
+
+.border-white {
+  border-color: #F0F8EA !important;
+}
+
+.border-3 {
+  border-width:3px !important;
+}
+
+.rounded {
+  border-radius: 20px !important;
+}
+
+.carousel-control span.glyphicon {
+    color: red;
+}
+
+.carousel-inner {
+  width: 80%;
+  left: 10%;
+}

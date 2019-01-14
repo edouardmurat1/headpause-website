@@ -59,20 +59,23 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top" title="HeadPause - Pleine Conscience Urbaine">HeadPause<span> - Pleine Conscience Urbaine</span></a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top" title="HeadPause - Pleine Conscience Urbaine">HeadPause</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/#about" title="À propos">À Propos</a>
+              <a class="nav-link js-scroll-trigger" href="/#quote" title="À propos">À Propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/#services" title="Services">Services</a>
+              <a class="nav-link js-scroll-trigger" href="/#services" title="Services">Services perso</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/#coach" title="Coach">Coach</a>
+              <a class="nav-link js-scroll-trigger" href="/entreprise.html" title="Services">Services corpo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/#team" title="Équipe">Équipe</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/#testimonies" title="Témoignages">Témoignages</a>
@@ -92,11 +95,10 @@
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-12 mx-auto">
-            <h1 class="section-heading">Faites une vraie pause, en pleine conscience</h1>
+            <h1 class="section-heading light">Faites une vraie pause, en pleine conscience</h1>
             <hr class="primary">
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="mb-5 text-dark">Dans la ville, il est plus difficile de prendre du recul et de retrouver son calme intérieur. C'est pourquoi nous enseignons la <strong class="big">pleine conscience urbaine:</strong> l'observation du moment présent, adaptée à la vie de citadin.</p>
             <a id="pause-button" class="btn btn-light js-scroll-trigger mt-5" href="#quote" title="Citation">
               <i id="pause-icon" class="fas fa-pause-circle text-primary border-light border-small"></i>
             </a>
@@ -157,7 +159,7 @@
 
             <div id="service1_details" class="collapse">
               <div class="text-center my-3">
-                <img src="/img/mindfulness-101.png" alt="Pleine Conscience 101">
+                <img class="lazy" data-src="/img/mindfulness-101.png" alt="Pleine Conscience 101">
               </div>
               <div class="text-left">
                 <p class="light">
@@ -172,6 +174,23 @@
                 <a id="workshopRegisterLink" class="btn primary bg-light" href="https://tinyurl.com/y8fwv5pd" title="Pleine conscience 101 - inscription">
                   Inscription
                 </a>
+                <div class="text-right">
+                  <a id="workshop_thumbs-up" title="J'aime">
+                    <i class="fas fa-1-5x fa-thumbs-up btn primary bg-light"></i>
+                  </a>
+                  <a id="workshop_thumbs-down" title="Je n'aime pas">
+                    <i class="fas fa-1-5x fa-thumbs-down btn primary bg-light"></i>
+                  </a>
+                </div>
+                <div id="workshop-opinion" class="collapse p-2 m-1">
+                  <form class="form-inline">
+                    <input type="text" class="form-control w-78 mx-1" id="reason" placeholder="Parce que...">
+                    <button type="submit" class="btn primary bg-light">
+                      <i class="fas fa-1-5x fa-paper-plane"></i>
+                    </button>
+                  </form>
+                  <span class="dark"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -187,7 +206,7 @@
             </a>
             <div id="service2_details" class="collapse">
               <div class="text-center my-3">
-                <img src="/img/meditation-group.png" alt="Groupe de Méditation">
+                <img class="lazy" data-src="/img/meditation-group.png" alt="Groupe de Méditation">
               </div>
               <div class="text-left">
                 <p class="light">
@@ -207,6 +226,23 @@
                 <p class="light small">
                   PS: Nous fermons la porte au début de la séance.
                 </p>
+                <div class="text-right">
+                  <a id="meditation_thumbs-up" title="J'aime">
+                    <i class="fas fa-1-5x fa-thumbs-up btn primary bg-light"></i>
+                  </a>
+                  <a id="meditation_thumbs-down" title="Je n'aime pas">
+                    <i class="fas fa-1-5x fa-thumbs-down btn primary bg-light"></i>
+                  </a>
+                </div>
+                <div id="meditation-opinion" class="collapse p-2 m-1">
+                  <form class="form-inline">
+                    <input type="text" class="form-control w-78 mx-1" id="reason" placeholder="Parce que...">
+                    <button type="submit" class="btn primary bg-light">
+                      <i class="fas fa-1-5x fa-paper-plane"></i>
+                    </button>
+                  </form>
+                  <span class="dark"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -222,7 +258,7 @@
             </a>
             <div id="service3_details" class="collapse">
               <div class="text-center my-3">
-                <img src="/img/mindful-day.png" alt="Journée consciente">
+                <img class="lazy" data-src="/img/mindful-day.png" alt="Journée consciente">
               </div>
               <div class="text-left">
                 <p class="light">
@@ -245,6 +281,24 @@
                 <a id="mindfulDayContactLink" class="btn primary bg-light js-scroll-trigger" href="#contact" title="Contact">
                   Contactez-nous
                 </a>
+
+                <div class="text-right">
+                  <a id="mindfulday_thumbs-up" title="J'aime">
+                    <i class="fas fa-1-5x fa-thumbs-up btn primary bg-light"></i>
+                  </a>
+                  <a id="mindfulday_thumbs-down" title="Je n'aime pas">
+                    <i class="fas fa-1-5x fa-thumbs-down btn primary bg-light"></i>
+                  </a>
+                </div>
+                <div id="mindfulday-opinion" class="collapse p-2 m-1">
+                  <form class="form-inline">
+                    <input type="text" class="form-control w-78 mx-1" id="reason" placeholder="Parce que...">
+                    <button type="submit" class="btn primary bg-light">
+                      <i class="fas fa-1-5x fa-paper-plane"></i>
+                    </button>
+                  </form>
+                  <span class="dark"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -252,28 +306,30 @@
       </div>
     </section>
 
-    <section id="coach" class="bg-light">
+    <section id="team" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Coach</h2>
+            <h2 class="section-heading">Équipe</h2>
             <hr class="my-4 secondary">
           </div>
-          <div class="col-lg-12 mx-auto text-center">
+        </div>
+        <div class="row">
+          <div class="col-lg-6 text-center">
             <div class="mt-5 mx-auto">
-              <img srcset=" /img/coach/edouard-4x.jpg 4x,
-              /img/coach/edouard-3x.jpg 3x,
-              /img/coach/edouard-2x.jpg 2x,
-              /img/coach/edouard-1x.jpg 1x"
-              src="/img/coach/edouard-fallback.jpg"
-              class="mb-3 w-50 img-fluid rounded-circle"
+              <img data-srcset="/img/team/edouard-4x.jpg 4x,
+              /img/team/edouard-3x.jpg 3x,
+              /img/team/edouard-2x.jpg 2x,
+              /img/team/edouard-1x.jpg 1x"
+              src="/img/team/edouard-fallback.jpg"
+              class="mb-3 w-50 img-fluid rounded-circle lazy"
               alt="Edouard Murat">
               <h3 class="mb-3">Edouard Murat</h3>
               <p class="text-muted mb-0">Enseignant de Pleine Conscience, Psychothérapeute & Fondateur de HeadPause</p>
               <i class="fa fa-2x fa-quote-left float-left"></i>
               <p class="mt-2 text-justify">Je travaillais comme développeur en informatique depuis plus de 6 ans, chaque jour j'avais ma routine métro-boulot-dodo. <samp>De l'extérieur tout semblait normal, mais je ne supportais pas de rester seul avec mes pensées.</samp> Je devais constamment me distraire pour repousser mes pensées négatives qui devenaient de plus en plus fortes.</p>
 
-              <p class="mt-2 text-justify">Je me sentais seul et impuissant devant ce qui m'arrivait. <samp>Une pensée négative n'attendait pas l'autre, formant une spirale descendante qui m'attirais sans cesse vers le fond</samp>... Je n'en pouvais plus, mais pour moi il était impensable d'aller en thérapie. Je me sentais brisé et je ne voulais pas que ça se sache.</p>
+              <p class="mt-2 text-justify">Je me sentais seul et impuissant devant ce qui m'arrivait. <samp>Une pensée négative n'attendait pas l'autre, formant une spirale descendante qui m'attirait sans cesse vers le fond</samp>... Je n'en pouvais plus, mais pour moi il était impensable d'aller en thérapie. Je me sentais brisé et je ne voulais pas que ça se sache.</p>
 
               <p class="mt-2 text-justify">J'ai finalement fait le pas et suis allé en thérapie, ce qui m'a permis d'observer mes pensées et mes émotions sans me sentir jugé. Cette expérience a été libératrice, <samp>j'ai soudain compris à quelle point une bonne santé mentale était primordiale dans ma vie.</samp></p>
 
@@ -284,6 +340,44 @@
               <p class="mt-2 text-justify"><samp>Cela fait plus de 4 ans maintenant que je pratique, chaque jour, la pleine conscience urbaine...et les résultats sont stupéfiants!</samp> Moins de stress, moins d'anxiété, moins de pensées et émotions négatives. Plus de temps pour moi, plus de patience, plus de pensées et émotions positives. Je connais mieux mes capacités et mes limites. La pleine conscience c'est transformateur et j'en suis la preuve comme tant d'autres qui ont suivi le même chemin.</p>
 
               <p class="mt-2 text-justify">En 2017 j'ai fondé HeadPause et maintenant j'enseigne la pleine conscience urbaine à tous citadins qui souhaitent transformer positivement leur santé mentale. <samp>Obtenir une plus grande paix d'esprit, c'est faisable pour vous aussi!</samp></p>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center">
+            <div class="mt-5 mx-auto">
+              <img data-srcset="/img/team/marie-josee-4x.jpg 4x,
+              /img/team/marie-josee-3x.jpg 3x,
+              /img/team/marie-josee-2x.jpg 2x,
+              /img/team/marie-josee-1x.jpg 1x"
+              src="/img/team/marie-josee-fallback.jpg"
+              class="mb-3 w-50 img-fluid rounded-circle lazy"
+              alt="Marie-Josée Nucci">
+              <h3 class="mb-3">Marie-Josée Nucci</h3>
+              <p class="text-muted mb-0">Enseignante de Pleine Conscience & Directrice des opérations</p>
+              <i class="fa fa-2x fa-quote-left float-left"></i>
+              <p class="mt-2 text-justify"><samp>Au départ, mon histoire ressemble à celle de bien des gens….</samp> J’ai un emploi que j’aime beaucoup. J’occupe un poste comme gestionnaire de projets depuis plusieurs années. Je travaille fort et suis passionnée par celui-ci. J’ai un bon cercle d’amis. Je me tiens en forme. J’ai une vie que je considère saine et équilibrée.</p>
+
+              <p class="mt-2 text-justify">Mais tranquillement et sournoisement le travail commence à prendre beaucoup de place dans ma vie. Je me réveille la nuit et ne pense qu’à ça; tout ce que j’ai à faire, les problèmes que j’ai à résoudre, etc. Je réalise tranquillement que mes habitudes de travail changent.  <samp>J’ai du mal à me concentrer, je me sens épuisée, j’ai du mal à prendre des décisions.</samp> Ces changements me font bien peur, mais je préfère les ignorer, faire comme s’ils n’existaient pas et ce, même s’ils s’amplifient de jour en jour. J’ai un seul objectif : continuer ….  Je tiens le coup jusqu’au jour où s’ajoute un élément imprévu dans mon quotidien.</p>
+
+              <p class="mt-2 text-justify"><samp>C’est à ce moment que je décide de consulter. Diagnostic: burnout.</samp> Mon monde venait de s’écrouler….et c’est alors que tout a basculé</p>
+
+              <p class="mt-2 text-justify">C’est avec l’aide de la thérapie et la pratique de la pleine conscience que je m’en suis sortie. Passionnée par ses bienfaits, <samp>je décide alors de compléter un programme connu pour la réduction du stress basé sur la pleine conscience : MBSR (Mindfulness Based Stress Reduction).</samp> Et c’est alors que mon parcours et ma passion pour la pleine conscience se sont poursuivis.</p>
+
+              <p class="mt-2 text-justify">J’ai depuis mis en place plusieurs programmes et ateliers distincts de pleine conscience pour différents groupes. <samp>Mes compétences comme gestionnaire de projets combinées à ma pratique</samp>, me permettent de bien cibler les besoins des clients et ainsi mettre en place des programmes en fonction de ceux-ci.</p>
+
+              <p class="mt-2 text-justify"><samp>C’est avec le cœur ouvert et une grande volonté de partage que je donne les ateliers.</samp> Je vous invite à venir découvrir comment de simples gestes du quotidien peuvent avoir un immense impact sur votre bien-être et sur votre entourage.</p>
+            </div>
+            <div class="mt-5">
+              <img data-srcset="/img/team/kaoutar-4x.jpg 4x,
+              /img/team/kaoutar-3x.jpg 3x,
+              /img/team/kaoutar-2x.jpg 2x,
+              /img/team/kaoutar-1x.jpg 1x"
+              src="/img/team/kaoutar-fallback.jpg"
+              class="mb-3 w-33 img-fluid rounded-circle lazy"
+              alt="Kaoutar Chabbar">
+              <h3 class="mb-3">Kaoutar Chabbar</h3>
+              <p class="text-muted mb-0">Assistante Administrative</p>
+              <i class="fa fa-2x fa-quote-left float-left"></i>
+              <p class="mt-2 text-justify"><samp>J'aime faire une différence</samp> dans ma communauté, en venant directement en aide à des personnes dans le besoin. À travers mon poste au sein de HeadPause, je ressens clairement que <samp>ma contribution impacte positivement</samp> des personnes qui requièrent notre aide (personnes âgés, personnes avec des difficultés physiques et mentales, professionels de la santé). Je prends plaisir à participer aux choix stratégiques de HeadPause et à <samp>nous orienter vers des causes humanitaires</samp> qui me tiennent à coeur.</p>
             </div>
           </div>
         </div>
@@ -306,13 +400,13 @@
                   <p class="font-italic my-2">Tout ce que je peux dire, c'est que je me sens très détendue et calme après une journée stressante.</p>
                 </div>
                 <div class="col-3 justify-content-start">
-                  <img src="/img/testimony/woman-1.png" alt="Avatar femme" class="w-50 img-fluid rounded-circle"/>
+                  <img data-src="/img/testimony/woman-1.png" alt="Avatar femme" class="w-50 img-fluid rounded-circle lazy"/>
                   <small class="mx-1">Sandra</small>
                 </div>
               </div>
               <div id="testimony2" class="row testimony mb-3 mr-0 justify-content-center">
                 <div class="col-3 justify-content-end">
-                  <img src="/img/testimony/man-1.png" alt="Avatar homme" class="w-50 img-fluid rounded-circle"/>
+                  <img data-src="/img/testimony/man-1.png" alt="Avatar homme" class="w-50 img-fluid rounded-circle lazy"/>
                   <small class="mx-1">William</small>
                 </div>
                 <div class="col-8 text-left speech-bubble speech-bubble-left">
@@ -324,26 +418,26 @@
                   <p class="font-italic my-2">Très bon Edouard! Idéal pour les débutants aussi. Je pense que ton style est accessible et décontracté, ce qui est vraiment utile.</p>
                 </div>
                 <div class="col-3 justify-content-start">
-                  <img src="/img/testimony/woman-2.png" alt="Avatar femme" class="w-50 img-fluid rounded-circle"/>
-                  <small class="mx-1">Adriana</small>
+                  <img data-src="/img/testimony/man-2.png" alt="Avatar homme" class="w-50 img-fluid rounded-circle lazy"/>
+                  <small class="mx-1">Anonyme</small>
                 </div>
               </div>
               <div id="testimony4" class="row testimony mb-3 mr-0 justify-content-center">
                 <div class="col-3 justify-content-end">
-                  <img src="/img/testimony/woman-3.png" alt="Avatar femme" class="w-50 img-fluid rounded-circle"/>
-                  <small class="mx-1">Anonyme</small>
+                  <img data-src="/img/testimony/woman-3.png" alt="Avatar femme" class="w-50 img-fluid rounded-circle lazy"/>
+                  <small class="mx-1">Nicole</small>
                 </div>
                 <div class="col-8 text-left speech-bubble speech-bubble-left">
-                  <p class="font-italic my-2">J'ai vraiment apprécié tous vos conseils et votre présence apaisante.</p>
+                  <p class="font-italic my-2">Marie-Jo, C’est vraiment très bien, merci beaucoup d’être là. Je rêve d’avoir plus de temps pour méditer! [...] Tu incarnes tout à fait le style de personne idéale pour ce genre de formation, ton dynamisme étant ta première qualité, ton écoute et ta facilité à comprendre chacune à travers sa plus petite expression font de toi une super animatrice en même temps qu’une psychologue chevronnée. Merci d’être là, merci d’être toi!</p>
                 </div>
               </div>
               <div id="testimony5" class="row testimony mb-3 mr-0 justify-content-center">
                 <div class="col-8 text-left speech-bubble speech-bubble-right">
-                  <p class="font-italic my-2">Merci! Un moment de détente bien apprécié. Je vais continuer à la maison et revenir.</p>
+                  <p class="font-italic my-2">[Marie-Josée,] Juste un super gros merci-câlin d'avoir introduit d'une si merveilleuse façon un nouveau soleil dans notre vie.</p>
                 </div>
                 <div class="col-3 justify-content-start">
-                  <img src="/img/testimony/man-2.png" alt="Avatar homme" class="w-50 img-fluid rounded-circle"/>
-                  <small class="mx-1">Stéphane</small>
+                  <img data-src="/img/testimony/woman-2.png" alt="Avatar femme" class="w-50 img-fluid rounded-circle lazy"/>
+                  <small class="mx-1">Jacqueline</small>
                 </div>
               </div>
             </div>

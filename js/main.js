@@ -1,6 +1,9 @@
 (function($) {
   "use strict"; // Start of use strict
 
+  // lazy loading of images with data-src tag
+  $('.lazy').Lazy();
+
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -316,20 +319,31 @@
     offset: '50%'
   });
 
-
-  var coachAnimated = false;
-
   //Animate coach section when in viewport
-  var coachWP = $('#coach').waypoint(function(direction) {
-    if (!coachAnimated) {
-      $('#coach samp').each(function (index) {
+  var leftTeamAnimated = false;
+  var rightTeamAnimated = false;
+  $('#team').waypoint(function(direction) {
+    if (!leftTeamAnimated) {
+      $('#team .col-lg-6:nth-child(1) samp').each(function (index) {
         var item = $(this);
         setTimeout(function () {
           item.addClass('to-secondary-color');
         }, index * 500);
       });
-      //$("#coach samp").addClass("bolder");
-      coachAnimated = true;
+      leftTeamAnimated = true;
+    }
+  }, {
+    offset: '0'
+  });
+  $('#team').waypoint(function(direction) {
+    if (!rightTeamAnimated) {
+      $('#team .col-lg-6:nth-child(2) samp').each(function (index) {
+        var item = $(this);
+        setTimeout(function () {
+          item.addClass('to-secondary-color');
+        }, index * 500);
+      });
+      rightTeamAnimated = true;
     }
   }, {
     offset: '0'
@@ -393,6 +407,7 @@
     navbarCollapse();
   });
 
+  // Services collapse
   $('#service1_caret').click(function() {
     $('#service1_details').collapse('toggle');
     if($('#service1_caret i').hasClass("fa-caret-down")) {
@@ -421,6 +436,11 @@
       }, 1000, "easeInOutExpo");
     }
   });
+  $('#service1_details').on('hidden.bs.collapse', function() {
+    $('html, body').animate({
+      scrollTop: $('#service1_details').closest('section').offset().top
+    }, 1000, "easeInOutExpo");
+  });
 
   $('#service2_caret').click(function() {
     $('#service2_details').collapse('toggle');
@@ -448,6 +468,11 @@
       }, 1000, "easeInOutExpo");
     }
   });
+  $('#service2_details').on('hidden.bs.collapse', function() {
+    $('html, body').animate({
+      scrollTop: $('#service2_details').closest('section').offset().top
+    }, 1000, "easeInOutExpo");
+  });
 
   $('#service3_caret').click(function() {
     $('#service3_details').collapse('toggle');
@@ -474,6 +499,126 @@
         scrollTop: target
       }, 1000, "easeInOutExpo");
     }
+  });
+  $('#service3_details').on('hidden.bs.collapse', function() {
+    $('html, body').animate({
+      scrollTop: $('#service3_details').closest('section').offset().top
+    }, 1000, "easeInOutExpo");
+  });
+
+  // Opinions
+  $('#meditation_thumbs-up').click(function() {
+    $('#meditation_thumbs-down i').removeClass("active");
+    $('#meditation_thumbs-up i').addClass("active");
+    $('#meditation-opinion').collapse('show');
+    $('#meditation-opinion').removeClass("bg-light-secondary");
+    $('#meditation-opinion').addClass("bg-light-primary");
+    $('#meditation-opinion form input:first').focus();
+  });
+  $('#meditation_thumbs-down').click(function() {
+    $('#meditation_thumbs-up i').removeClass("active");
+    $('#meditation_thumbs-down i').addClass("active");
+    $('#meditation-opinion').collapse('show');
+    $('#meditation-opinion').removeClass("bg-light-primary");
+    $('#meditation-opinion').addClass("bg-light-secondary");
+    $('#meditation-opinion form input:first').focus();
+  });
+  $("#meditation-opinion form").submit(function(event) {
+    var feedback = $("#meditation-opinion form input:first").val();
+    if(feedback != "" ) {
+      $.get("https://api.myjson.com/bins/dfte6", function(data, textStatus, jqXHR) {
+        data.meditation.push(feedback);
+        $.ajax({
+          url:"https://api.myjson.com/bins/dfte6",
+          type:"PUT",
+          data:JSON.stringify(data),
+          contentType:"application/json; charset=utf-8",
+          dataType:"json",
+          success: function(data, textStatus, jqXHR){
+            $("#meditation-opinion span" ).text("Merci!").show();
+          }
+        });
+      });
+    } else {
+      $("#meditation-opinion span").text( "Invalide" ).show().fadeOut( 3000 );
+    }
+    event.preventDefault();
+  });
+
+  $('#workshop_thumbs-up').click(function() {
+    $('#workshop_thumbs-down i').removeClass("active");
+    $('#workshop_thumbs-up i').addClass("active");
+    $('#workshop-opinion').collapse('show');
+    $('#workshop-opinion').removeClass("bg-light-secondary");
+    $('#workshop-opinion').addClass("bg-light-primary");
+    $('#workshop-opinion form input:first').focus();
+  });
+  $('#workshop_thumbs-down').click(function() {
+    $('#workshop_thumbs-up i').removeClass("active");
+    $('#workshop_thumbs-down i').addClass("active");
+    $('#workshop-opinion').collapse('show');
+    $('#workshop-opinion').removeClass("bg-light-primary");
+    $('#workshop-opinion').addClass("bg-light-secondary");
+    $('#workshop-opinion form input:first').focus();
+  });
+  $("#workshop-opinion form").submit(function(event) {
+    var feedback = $("#workshop-opinion form input:first").val();
+    if(feedback != "" ) {
+      $.get("https://api.myjson.com/bins/dfte6", function(data, textStatus, jqXHR) {
+        data.workshop.push(feedback);
+        $.ajax({
+          url:"https://api.myjson.com/bins/dfte6",
+          type:"PUT",
+          data:JSON.stringify(data),
+          contentType:"application/json; charset=utf-8",
+          dataType:"json",
+          success: function(data, textStatus, jqXHR){
+            $("#workshop-opinion span" ).text("Merci!").show();
+          }
+        });
+      });
+    } else {
+      $("#workshop-opinion span").text( "Invalide" ).show().fadeOut( 3000 );
+    }
+    event.preventDefault();
+  });
+
+  $('#mindfulday_thumbs-up').click(function() {
+    $('#mindfulday_thumbs-down i').removeClass("active");
+    $('#mindfulday_thumbs-up i').addClass("active");
+    $('#mindfulday-opinion').collapse('show');
+    $('#mindfulday-opinion').removeClass("bg-light-secondary");
+    $('#mindfulday-opinion').addClass("bg-light-primary");
+    $('#mindfulday-opinion form input:first').focus();
+  });
+  $('#mindfulday_thumbs-down').click(function() {
+    $('#mindfulday_thumbs-up i').removeClass("active");
+    $('#mindfulday_thumbs-down i').addClass("active");
+    $('#mindfulday-opinion').collapse('show');
+    $('#mindfulday-opinion').removeClass("bg-light-primary");
+    $('#mindfulday-opinion').addClass("bg-light-secondary");
+    $('#mindfulday-opinion form input:first').focus();
+  });
+  $("#mindfulday-opinion form").submit(function(event) {
+    var feedback = $("#mindfulday-opinion form input:first").val();
+    if(feedback != "" ) {
+      $.get("https://api.myjson.com/bins/dfte6", function(data, textStatus, jqXHR) {
+        data.mindfulday.push(feedback);
+        $.ajax({
+          url:"https://api.myjson.com/bins/dfte6",
+          type:"PUT",
+          data:JSON.stringify(data),
+          contentType:"application/json; charset=utf-8",
+          dataType:"json",
+          success: function(data, textStatus, jqXHR){
+            $("#mindfulday-opinion span" ).text("Merci!").show();
+          }
+        });
+      });
+    } else {
+      $("#mindfulday-opinion span").text( "Invalide" ).show().fadeOut( 3000 );
+    }
+    event.preventDefault();
   });
 
 })(jQuery); // End of use strict
