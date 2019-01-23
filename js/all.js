@@ -27224,6 +27224,22 @@ return Snap;
     offset: '20%'
   })
 
+  console.log(document.documentElement.lang);
+
+  if (document.documentElement.lang == "fr") {
+    console.log("what");
+    window.odometerOptions = {
+      format: '(ddd),dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
+      duration: 2000, // Change how long the javascript expects the CSS animation to take
+    };
+  } else if(document.documentElement.lang == "en") {
+    console.log("whaaaaat");
+    window.odometerOptions = {
+      format: '( ddd).dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
+      duration: 2000, // Change how long the javascript expects the CSS animation to take
+    };
+  }
+
   //Animate odometers when in viewport
   $('#odometer-1').waypoint(function(direction) {
     $('#odometer-1').html('55.4');

@@ -10,4 +10,5 @@ cat vendor/jquery/jquery.js vendor/bootstrap/js/bootstrap.bundle.js vendor/jquer
 minify -o css/head.min.css css/head.css
 minify -o css/footer.min.css css/footer.css
 
+minify -o vendor/odometer/odometer.min.js vendor/odometer/odometer.js
 minify -o js/all.min.js js/all.js
