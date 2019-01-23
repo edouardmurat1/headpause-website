@@ -26907,7 +26907,7 @@ return Snap;
       $('#corpoteam .col-lg-6:nth-child(1) samp').each(function (index) {
         var item = $(this);
         setTimeout(function () {
-          item.addClass('to-primary-color');
+          item.addClass('to-white-color');
         }, index * 500);
       });
       leftTeamAnimated = true;
@@ -26920,7 +26920,7 @@ return Snap;
       $('#corpoteam .col-lg-6:nth-child(2) samp').each(function (index) {
         var item = $(this);
         setTimeout(function () {
-          item.addClass('to-primary-color');
+          item.addClass('to-white-color');
         }, index * 500);
       });
       rightTeamAnimated = true;

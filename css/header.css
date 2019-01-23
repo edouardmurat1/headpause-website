@@ -424,11 +424,11 @@ header.mt-5 {
   }
 }
 
-@keyframes to-primary-color {
-  100% { color: #89B829; font-weight: bold; }
+@keyframes to-white-color {
+  100% { color: #ffffff; font-weight: bold; }
 }
-.to-primary-color {
-  animation: to-primary-color 1s;
+.to-white-color {
+  animation: to-white-color 1s;
   animation-fill-mode: forwards;
 }
 
