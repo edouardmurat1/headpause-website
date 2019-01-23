@@ -26296,6 +26296,11 @@ return Snap;
     $('.navbar-collapse').collapse('hide');
   });
 
+  // Close alerts when navbar is clicked
+  $('.navbar-toggler').click(function() {
+    $(".alert").alert('close');
+  });
+
   // Activate scrollspy to add active class to navbar items on scroll
   $('body').scrollspy({
     target: '#mainNav',

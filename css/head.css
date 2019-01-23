@@ -9395,6 +9395,22 @@ header.mt-5 {
   }
 }
 
+@media (max-width:768px){
+  .alert {
+    position: fixed;
+    top: 56px;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+@media (min-width:769px){
+  .alert {
+    display: none;
+  }
+}
+
 @media (min-width: 576px) and (max-width:767.98px){
   #mainNav .navbar-brand {
     font-size: 1rem;
@@ -9409,6 +9425,14 @@ header.mt-5 {
 }
 .to-white-color {
   animation: to-white-color 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes to-primary-color {
+  100% { color: #89B829; font-weight: bold; }
+}
+.to-primary-color {
+  animation: to-primary-color 1s;
   animation-fill-mode: forwards;
 }
 
