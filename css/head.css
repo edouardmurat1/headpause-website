@@ -9251,6 +9251,7 @@ header.masthead {
 header.masthead.video {
   background-image: none;
   background: linear-gradient(rgba(33,37,41,1), rgba(0,0,0,0));
+  height: 100vh;
 }
 
 header.masthead hr {
@@ -9393,8 +9394,21 @@ header.mt-5 {
   #mainNav .navbar-brand span {
     display: none;
   }
+  video {
+    margin-left: 75% !important;
+  }
 }
-
+@media (min-width: 576px) and (max-width:767.98px){
+  #mainNav .navbar-brand {
+    font-size: 1rem;
+  }
+  #mainNav .navbar-brand span {
+    font-size: .9rem;
+  }
+  video {
+    margin-left: 50% !important;
+  }
+}
 @media (max-width:768px){
   .alert {
     position: fixed;
@@ -9408,15 +9422,6 @@ header.mt-5 {
 @media (min-width:769px){
   .alert {
     display: none;
-  }
-}
-
-@media (min-width: 576px) and (max-width:767.98px){
-  #mainNav .navbar-brand {
-    font-size: 1rem;
-  }
-  #mainNav .navbar-brand span {
-    font-size: .9rem;
   }
 }
 
@@ -9524,4 +9529,9 @@ p.my-0 strong {
   min-height: 100%;
   z-index: -1;
   background-image: none;
+}
+
+video {
+  height: 100vh;
+  object-fit: cover;
 }
