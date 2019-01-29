@@ -539,6 +539,17 @@ video {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
+a.bg-light:hover {
+  text-decoration: none!important;
+  color: #F0F8EA!important;
+  background-color: #FFA98F!important;
+}
+a.bg-dark:hover {
+  text-decoration: none!important;
+  color: #212529!important;
+  background-color: #89B829!important;
+}
+
 .alert-border-light {
   border: 2px solid #F0F8EA!important;
 }
