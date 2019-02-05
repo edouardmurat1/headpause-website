@@ -128,10 +128,10 @@ br {
   background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://tinyurl.com/y9njx7sb');
 }
 #servicecorpo2 > div {
-  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://media.mnn.com/assets/images/2017/06/sonic_mushroom_beef_burger.jpg.653x0_q80_crop-smart.jpg');
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://tinyurl.com/y7y5a5pc');
 }
 #servicecorpo3 > div {
-  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://coral-distr.com/images/%D0%91%D1%83%D1%82%D0%B0%D0%BA%D0%BE%D0%B2%D0%B0/Stress3.jpg');
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://tinyurl.com/y96poe7c');
 }
 #servicecorpo4 > div {
   background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('http://www.cordonblanc.fr/wp-content/uploads/2018/10/1246-2.jpg');
@@ -140,12 +140,10 @@ br {
   background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('http://biblio.bas-rhin.fr/eCommunityImages/68E30C82-1D65-4EF1-823A-81814F644A3F/253/w1920wh1080h/bdbr-boite-a-outils.jpg');
 }
 #servicecorpo6 > div {
-  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('https://www.besthealthmag.ca/wp-content/uploads/sites/16/2011/11/Meditation-For-Beginners.jpg');
+  background: linear-gradient( rgba(240,248,234,0.8), rgba(240,248,234,0.8) ), url('');
 }
 
-#servicecorpo1 > div, #servicecorpo2 > div,
-#servicecorpo3 > div, #servicecorpo4 > div,
-#servicecorpo5 > div, #servicecorpo6 > div {
+#servicecorpo1 > div, #servicecorpo2 > div, #servicecorpo3 > div {
   background-size: cover;
   -webkit-transition: background-color .5s;
   -moz-transition: background-color .5s;
@@ -175,6 +173,9 @@ br {
   border-color: #F0F8EA !important;
 }
 
+.border-1 {
+  border-width:1px !important;
+}
 .border-3 {
   border-width:3px !important;
 }

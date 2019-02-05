@@ -26941,18 +26941,6 @@ return Snap;
     $('#servicecorpo3').toggleClass('focused');
     $('#servicecorpo3_details').collapse('toggle');
   });
-  $('#servicecorpo4').click(function() {
-    $('#servicecorpo4').toggleClass('focused');
-    $('#servicecorpo4_details').collapse('toggle');
-  });
-  $('#servicecorpo5').click(function() {
-    $('#servicecorpo5').toggleClass('focused');
-    $('#servicecorpo5_details').collapse('toggle');
-  });
-  $('#servicecorpo6').click(function() {
-    $('#servicecorpo6').toggleClass('focused');
-    $('#servicecorpo6_details').collapse('toggle');
-  });
 
   $('#servicecorpo1_details').on('shown.bs.collapse', function() {
     $('html, body').animate({
@@ -26967,37 +26955,6 @@ return Snap;
   $('#servicecorpo3_details').on('shown.bs.collapse', function() {
     $('html, body').animate({
       scrollTop: $('#servicecorpo3').offset().top - 50
-    }, 1000, "easeInOutExpo");
-  });
-  $('#servicecorpo4_details').on('shown.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#servicecorpo4').offset().top - 50
-    }, 1000, "easeInOutExpo");
-  });
-  $('#servicecorpo5_details').on('shown.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#servicecorpo5').offset().top - 50
-    }, 1000, "easeInOutExpo");
-  });
-  $('#servicecorpo6_details').on('shown.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#servicecorpo6').offset().top - 50
-    }, 1000, "easeInOutExpo");
-  });
-
-  $('#servicecorpo4_details').on('hidden.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#servicecorpo1_details').closest('section').offset().top
-    }, 1000, "easeInOutExpo");
-  });
-  $('#servicecorpo5_details').on('hidden.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#servicecorpo1_details').closest('section').offset().top
-    }, 1000, "easeInOutExpo");
-  });
-  $('#servicecorpo6_details').on('hidden.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#servicecorpo1_details').closest('section').offset().top
     }, 1000, "easeInOutExpo");
   });
 
