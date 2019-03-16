@@ -9518,11 +9518,20 @@ video {
   z-index: 1029;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
+.alert-2 {
+  top: 100px;
+}
 
-a.bg-light:hover {
+a.bg-light.text-secondary:hover {
   text-decoration: none!important;
   color: #F0F8EA!important;
   background-color: #FF6232!important;
+}
+a.bg-light.text-primary:hover {
+  text-decoration: none!important;
+  color: #F0F8EA!important;
+  background-color: #89B829!important;
+  border: 2px solid #F0F8EA!important;
 }
 a.bg-dark:hover {
   text-decoration: none!important;
@@ -9532,6 +9541,9 @@ a.bg-dark:hover {
 
 .alert-border-light {
   border: 2px solid #F0F8EA!important;
+}
+.alert-border-primary {
+  border: 2px solid #89B829!important;
 }
 .alert-border-secondary {
   border: 2px solid #FF6232!important;
