@@ -541,6 +541,11 @@ video {
 .alert-2 {
   top: 100px;
 }
+@media (max-width:575.98px){
+  .alert-2 {
+    font-size: 0.9rem;
+  }
+}
 
 a.bg-light.text-secondary:hover {
   text-decoration: none!important;
