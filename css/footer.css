@@ -87,7 +87,7 @@ br {
   position: absolute;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .down-one-row {
     top: 250px;
   }
