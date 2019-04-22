@@ -26471,29 +26471,6 @@ return Snap;
       $('#service1_caret i').addClass("fa-caret-down");
     }
   });
-  $('#service1_details').on('shown.bs.collapse', function() {
-    var target;
-    console.lo
-
-    if($('#service1_details').height() + 100 > $(window).height()) {
-      target = $('#service1_caret').offset().top -
-      $('#service1_caret').height() - 50;
-    } else {
-      target = $('#service1_details').offset().top -
-      $(window).height() + $('#service1_details').height() + 50
-    }
-
-    if(target > $('html, body').scrollTop()) {
-      $('html, body').animate({
-        scrollTop: target
-      }, 1000, "easeInOutExpo");
-    }
-  });
-  $('#service1_details').on('hidden.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#service1_details').closest('section').offset().top
-    }, 1000, "easeInOutExpo");
-  });
 
   $('#service2_caret').click(function() {
     $('#service2_details').collapse('toggle');
@@ -26505,27 +26482,6 @@ return Snap;
       $('#service2_caret i').addClass("fa-caret-down");
     }
   });
-  $('#service2_details').on('shown.bs.collapse', function() {
-    var target;
-    if($('#service2_details').height() + 100 > $(window).height()) {
-      target = $('#service2_caret').offset().top -
-      $('#service2_caret').height() - 50;
-    } else {
-      target = $('#service2_details').offset().top -
-      $(window).height() + $('#service2_details').height() + 50
-    }
-
-    if(target > $('html, body').scrollTop()) {
-      $('html, body').animate({
-        scrollTop: target
-      }, 1000, "easeInOutExpo");
-    }
-  });
-  $('#service2_details').on('hidden.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#service2_details').closest('section').offset().top
-    }, 1000, "easeInOutExpo");
-  });
 
   $('#service3_caret').click(function() {
     $('#service3_details').collapse('toggle');
@@ -26536,27 +26492,6 @@ return Snap;
       $('#service3_caret i').removeClass("fa-caret-up");
       $('#service3_caret i').addClass("fa-caret-down");
     }
-  });
-  $('#service3_details').on('shown.bs.collapse', function() {
-    var target;
-    if($('#service3_details').height() + 100 > $(window).height()) {
-      target = $('#service3_caret').offset().top -
-      $('#service3_caret').height() - 50;
-    } else {
-      target = $('#service3_details').offset().top -
-      $(window).height() + $('#service3_details').height() + 50
-    }
-
-    if(target > $('html, body').scrollTop()) {
-      $('html, body').animate({
-        scrollTop: target
-      }, 1000, "easeInOutExpo");
-    }
-  });
-  $('#service3_details').on('hidden.bs.collapse', function() {
-    $('html, body').animate({
-      scrollTop: $('#service3_details').closest('section').offset().top
-    }, 1000, "easeInOutExpo");
   });
 
   // Opinions
