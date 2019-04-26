@@ -100,7 +100,7 @@
     </div>
     <div class="container">
       <div class="row alert alert-2 p-0 text-center text-justify-center alert-border-primary">
-        <a class="col mx-auto bg-light p-2 text-primary" href="#" onclick="$('#service2_caret').click();return false;">
+        <a class="col mx-auto bg-light p-2 text-primary" href="#" onclick="$('html, body').animate({scrollTop:($('#services').offset().top - 50)}, 1000, 'easeInOutExpo');$('#service2_caret').click();return false;">
           <strong class="p-3 text-secondary">NEW!</strong><strong class="">Introductory mindfulness workshop</strong>
         </a>
       </div>
