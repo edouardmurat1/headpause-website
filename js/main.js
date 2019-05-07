@@ -229,6 +229,17 @@
     }
   });
 
+  $('#service4_caret').click(function() {
+    $('#service4_details').collapse('toggle');
+    if($('#service4_caret i').hasClass("fa-caret-down")) {
+      $('#service4_caret i').removeClass("fa-caret-down");
+      $('#service4_caret i').addClass("fa-caret-up");
+    } else {
+      $('#service4_caret i').removeClass("fa-caret-up");
+      $('#service4_caret i').addClass("fa-caret-down");
+    }
+  });
+
   // Opinions
   $('#meditation_thumbs-up').click(function() {
     $('#meditation_thumbs-down i').removeClass("active");
