@@ -1,6 +1,14 @@
 (function($) {
   "use strict"; // Start of use strict
 
+  var lang = $('html').attr('lang')
+
+  var isTouchDevice = function() {
+    return (('ontouchstart' in window)
+      || (navigator.MaxTouchPoints > 0)
+      || (navigator.msMaxTouchPoints > 0));
+  };
+
   // lazy loading of images with data-src tag
   $('.lazy').Lazy();
 
@@ -11,7 +19,7 @@
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
       if (target.length) {
         $('html, body').animate({
-          scrollTop: (target.offset().top - 50)
+          scrollTop: (target.offset().top - 80)
         }, 1000, "easeInOutExpo");
         return false;
       }
@@ -57,7 +65,7 @@
       $("iframe").contents().find(".content__button input").css('font-size', "18px");
 
       // translate for french users
-      if($('html').attr('lang')=='fr') {
+      if(lang=='fr') {
         $("iframe").contents().find("#mc-LANGUAGE").val("FR");
 
         $("iframe").contents().find(".content__titleDescription span").text('Obtenez Votre Guide Gratuit Maintenant: "Comment méditer en ville?"');
@@ -195,164 +203,68 @@
     navbarCollapse();
   });
 
-  // Services collapse
-  $('#service1_caret').click(function() {
-    $('#service1_details').collapse('toggle');
-    if($('#service1_caret i').hasClass("fa-caret-down")) {
-      $('#service1_caret i').removeClass("fa-caret-down");
-      $('#service1_caret i').addClass("fa-caret-up");
-    } else {
-      $('#service1_caret i').removeClass("fa-caret-up");
-      $('#service1_caret i').addClass("fa-caret-down");
-    }
-  });
+  document.addEventListener("DOMContentLoaded",function() {
+    var defaultView = (isTouchDevice()) ? 'listWeek' : 'month';
+    var locale = (lang=='fr') ? 'fr' : 'en';
 
-  $('#service2_caret').click(function() {
-    $('#service2_details').collapse('toggle');
-    if($('#service2_caret i').hasClass("fa-caret-down")) {
-      $('#service2_caret i').removeClass("fa-caret-down");
-      $('#service2_caret i').addClass("fa-caret-up");
-    } else {
-      $('#service2_caret i').removeClass("fa-caret-up");
-      $('#service2_caret i').addClass("fa-caret-down");
-    }
-  });
-
-  $('#service3_caret').click(function() {
-    $('#service3_details').collapse('toggle');
-    if($('#service3_caret i').hasClass("fa-caret-down")) {
-      $('#service3_caret i').removeClass("fa-caret-down");
-      $('#service3_caret i').addClass("fa-caret-up");
-    } else {
-      $('#service3_caret i').removeClass("fa-caret-up");
-      $('#service3_caret i').addClass("fa-caret-down");
-    }
-  });
-
-  $('#service4_caret').click(function() {
-    $('#service4_details').collapse('toggle');
-    if($('#service4_caret i').hasClass("fa-caret-down")) {
-      $('#service4_caret i').removeClass("fa-caret-down");
-      $('#service4_caret i').addClass("fa-caret-up");
-    } else {
-      $('#service4_caret i').removeClass("fa-caret-up");
-      $('#service4_caret i').addClass("fa-caret-down");
-    }
-  });
-
-  // Opinions
-  $('#meditation_thumbs-up').click(function() {
-    $('#meditation_thumbs-down i').removeClass("active");
-    $('#meditation_thumbs-up i').addClass("active");
-    $('#meditation-opinion').collapse('show');
-    $('#meditation-opinion').removeClass("bg-light-secondary");
-    $('#meditation-opinion').addClass("bg-light-primary");
-    $('#meditation-opinion form input:first').focus();
-  });
-  $('#meditation_thumbs-down').click(function() {
-    $('#meditation_thumbs-up i').removeClass("active");
-    $('#meditation_thumbs-down i').addClass("active");
-    $('#meditation-opinion').collapse('show');
-    $('#meditation-opinion').removeClass("bg-light-primary");
-    $('#meditation-opinion').addClass("bg-light-secondary");
-    $('#meditation-opinion form input:first').focus();
-  });
-  $("#meditation-opinion form").submit(function(event) {
-    var feedback = $("#meditation-opinion form input:first").val();
-    if(feedback != "" ) {
-      $.get("https://api.myjson.com/bins/dfte6", function(data, textStatus, jqXHR) {
-        data.meditation.push(feedback);
-        $.ajax({
-          url:"https://api.myjson.com/bins/dfte6",
-          type:"PUT",
-          data:JSON.stringify(data),
-          contentType:"application/json; charset=utf-8",
-          dataType:"json",
-          success: function(data, textStatus, jqXHR){
-            $("#meditation-opinion span" ).text("Merci!").show();
-          }
+    var calendarEl = document.getElementById('eventcalendar');
+    var calcal = new FullCalendar.Calendar(calendarEl, {
+      locale: locale,
+      resourceAreaWidth: 230,
+      editable: false,
+      aspectRatio: 1,
+      scrollTime: '00:00',
+      header: {
+        left: 'title',
+        center: false,
+        right: 'prev,next'
+      },
+      defaultView: defaultView,
+      eventLimit: 2,
+      weekends: true,
+      events: [
+        {
+          title: 'Méditation',
+          description: 'Groupe de méditation de pleine conscience gratuit',
+          startTime:'18:30:00',
+          endTime: '20:00:00',
+          daysOfWeek: [5],
+          startRecur: '2019-06-21',
+          endRecur: '2019-07-26',
+          url: 'https://tinyurl.com/yxrd38hd'
+        },
+        {
+          title: 'Marche / Walk',
+          description: 'Marche consciente au Mont Royal / Mindful walk on Mount Royal',
+          startTime: '18:00:00',
+          endTime: '19:30:00',
+          daysOfWeek: [3],
+          startRecur: '2019-06-05',
+          endRecur: '2019-06-26',
+          url: 'https://tinyurl.com/y2b22dgr'
+        },
+        {
+          title: 'Pleine C. 101',
+          description: 'Pleine Conscience 101: Atelier d\'introduction à la pleine conscience',
+          start: '2019-06-11T18:00:00',
+          end: '2019-06-11T20:00:00',
+          url:'https://tinyurl.com/y64fqsr7'
+        },
+        {
+          title:'Mindful. 101',
+          description: 'Mindfulness 101: Introductory workshop to mindfulness',
+          start: '2019-06-13T18:00:00',
+          end: '2019-06-13T20:00:00',
+          url:'https://tinyurl.com/y3hlp645'
+        }
+      ],
+      eventMouseEnter: function (mouseEnterInfo) {
+        $(mouseEnterInfo.el).tooltip({
+          title: mouseEnterInfo.event.extendedProps.description
         });
-      });
-    } else {
-      $("#meditation-opinion span").text( "Invalide" ).show().fadeOut( 3000 );
-    }
-    event.preventDefault();
-  });
+      }
+    }).render();
 
-  $('#workshop_thumbs-up').click(function() {
-    $('#workshop_thumbs-down i').removeClass("active");
-    $('#workshop_thumbs-up i').addClass("active");
-    $('#workshop-opinion').collapse('show');
-    $('#workshop-opinion').removeClass("bg-light-secondary");
-    $('#workshop-opinion').addClass("bg-light-primary");
-    $('#workshop-opinion form input:first').focus();
-  });
-  $('#workshop_thumbs-down').click(function() {
-    $('#workshop_thumbs-up i').removeClass("active");
-    $('#workshop_thumbs-down i').addClass("active");
-    $('#workshop-opinion').collapse('show');
-    $('#workshop-opinion').removeClass("bg-light-primary");
-    $('#workshop-opinion').addClass("bg-light-secondary");
-    $('#workshop-opinion form input:first').focus();
-  });
-  $("#workshop-opinion form").submit(function(event) {
-    var feedback = $("#workshop-opinion form input:first").val();
-    if(feedback != "" ) {
-      $.get("https://api.myjson.com/bins/dfte6", function(data, textStatus, jqXHR) {
-        data.workshop.push(feedback);
-        $.ajax({
-          url:"https://api.myjson.com/bins/dfte6",
-          type:"PUT",
-          data:JSON.stringify(data),
-          contentType:"application/json; charset=utf-8",
-          dataType:"json",
-          success: function(data, textStatus, jqXHR){
-            $("#workshop-opinion span" ).text("Merci!").show();
-          }
-        });
-      });
-    } else {
-      $("#workshop-opinion span").text( "Invalide" ).show().fadeOut( 3000 );
-    }
-    event.preventDefault();
-  });
-
-  $('#mindfulday_thumbs-up').click(function() {
-    $('#mindfulday_thumbs-down i').removeClass("active");
-    $('#mindfulday_thumbs-up i').addClass("active");
-    $('#mindfulday-opinion').collapse('show');
-    $('#mindfulday-opinion').removeClass("bg-light-secondary");
-    $('#mindfulday-opinion').addClass("bg-light-primary");
-    $('#mindfulday-opinion form input:first').focus();
-  });
-  $('#mindfulday_thumbs-down').click(function() {
-    $('#mindfulday_thumbs-up i').removeClass("active");
-    $('#mindfulday_thumbs-down i').addClass("active");
-    $('#mindfulday-opinion').collapse('show');
-    $('#mindfulday-opinion').removeClass("bg-light-primary");
-    $('#mindfulday-opinion').addClass("bg-light-secondary");
-    $('#mindfulday-opinion form input:first').focus();
-  });
-  $("#mindfulday-opinion form").submit(function(event) {
-    var feedback = $("#mindfulday-opinion form input:first").val();
-    if(feedback != "" ) {
-      $.get("https://api.myjson.com/bins/dfte6", function(data, textStatus, jqXHR) {
-        data.mindfulday.push(feedback);
-        $.ajax({
-          url:"https://api.myjson.com/bins/dfte6",
-          type:"PUT",
-          data:JSON.stringify(data),
-          contentType:"application/json; charset=utf-8",
-          dataType:"json",
-          success: function(data, textStatus, jqXHR){
-            $("#mindfulday-opinion span" ).text("Merci!").show();
-          }
-        });
-      });
-    } else {
-      $("#mindfulday-opinion span").text( "Invalide" ).show().fadeOut( 3000 );
-    }
-    event.preventDefault();
   });
 
 })(jQuery); // End of use strict
