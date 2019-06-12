@@ -256,6 +256,13 @@
           start: '2019-06-13T18:00:00',
           end: '2019-06-13T20:00:00',
           url:'https://tinyurl.com/y3hlp645'
+        },
+        {
+          title:'Méditation nature',
+          description: 'Groupe de méditation de pleine conscience en nature',
+          start:'2019-06-15T10:00:00',
+          end:'2019-06-15T11:00:00',
+          url: 'https://tinyurl.com/yy3byab4'
         }
       ],
       eventMouseEnter: function (mouseEnterInfo) {
