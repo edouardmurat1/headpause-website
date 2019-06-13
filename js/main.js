@@ -230,7 +230,7 @@
           endTime: '20:00:00',
           daysOfWeek: [5],
           startRecur: '2019-06-21',
-          endRecur: '2019-07-26',
+          endRecur: '2019-07-27',
           url: 'https://tinyurl.com/yxrd38hd'
         },
         {
@@ -263,12 +263,47 @@
           start:'2019-06-15T10:00:00',
           end:'2019-06-15T11:00:00',
           url: 'https://tinyurl.com/yy3byab4'
+        },
+        {
+          title: 'Intro FR',
+          description: 'Introduction à la pleine conscience',
+          start: '2019-07-04T11:30:00',
+          end: '2019-07-04T12:30:00',
+          url:'https://tinyurl.com/y5mabmy2'
+        },
+        {
+          title:'Séance',
+          description: 'Séance de méditation de pleine conscience',
+          start: '2019-07-04T12:30:00',
+          end: '2019-07-04T13:30:00',
+          url:'https://tinyurl.com/yyc538jp'
+        },
+        {
+          title: 'Intro EN',
+          description: 'Introduction to mindfulness',
+          start: '2019-07-05T11:30:00',
+          end: '2019-07-05T12:30:00',
+          url:'https://tinyurl.com/yxtytqyj'
+        },
+        {
+          title:'Session',
+          description: 'Meditation session to practice mindfulness',
+          start: '2019-07-05T12:30:00',
+          end: '2019-07-05T13:30:00',
+          url:'https://tinyurl.com/yy8p6d4g'
         }
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
           title: mouseEnterInfo.event.extendedProps.description
         });
+      },
+      eventClick: function(info) {
+        if (info.event.url) {
+          info.jsEvent.preventDefault();
+          window.open(info.event.url, "_blank");
+          return false;
+        }
       }
     }).render();
 
