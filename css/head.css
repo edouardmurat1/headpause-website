@@ -9604,3 +9604,7 @@ a.bg-dark:hover {
 #calendar .fc-left {
   text-transform: capitalize;
 }
+
+#calendar .fc-title {
+  white-space: normal;
+}
