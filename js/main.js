@@ -292,6 +292,16 @@
           start: '2019-07-05T12:30:00',
           end: '2019-07-05T13:30:00',
           url:'https://tinyurl.com/yy8p6d4g'
+        },
+        {
+          title:'Méditation au parc',
+          description: 'Méditation au parc, pleine conscience en nature',
+          startTime: '10:30:00',
+          endTime: '11:30:00',
+          daysOfWeek: [3,4],
+          startRecur: '2019-06-18',
+          endRecur: '2019-06-28',
+          url:'https://tinyurl.com/y4yceuqz'
         }
       ],
       eventMouseEnter: function (mouseEnterInfo) {
