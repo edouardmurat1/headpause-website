@@ -628,3 +628,13 @@ a.bg-dark:hover {
 #calendar .fc-title {
   white-space: normal;
 }
+
+.placeholder {
+  width: 248px;
+  height: 230px;
+
+  /* optional way, set loading as background */
+  background-image: url('/img/230x230.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
