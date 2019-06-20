@@ -609,16 +609,13 @@ a.bg-dark:hover {
 }
 
 #calendar .fc-body .fc-row {
-  height: 90px!important;
+  height: 116px!important;
+  /* height: 96px!important; */
   /* height: 51px!important; */
 }
 
 #calendar .fc-head .fc-row {
   height: 30px!important;
-}
-
-#calendar .fc-scroller {
-  height: 547px!important;
 }
 
 #calendar .fc-left {

@@ -26473,9 +26473,10 @@ return Snap;
     var locale = (lang=='fr') ? 'fr' : 'en';
 
     var calendarEl = document.getElementById('eventcalendar');
-    var calcal = new FullCalendar.Calendar(calendarEl, {
+    var cal = new FullCalendar.Calendar(calendarEl, {
       locale: locale,
-      resourceAreaWidth: 230,
+      height: 'auto',
+      contentHeight: 600,
       editable: false,
       aspectRatio: 1,
       scrollTime: '00:00',
@@ -26485,7 +26486,7 @@ return Snap;
         right: 'prev,next'
       },
       defaultView: defaultView,
-      eventLimit: 2,
+      eventLimit: 3,
       hiddenDays: [0],
       weekends: true,
       events: [
@@ -26567,7 +26568,17 @@ return Snap;
           startRecur: '2019-06-18',
           endRecur: '2019-06-28',
           url:'https://tinyurl.com/y4yceuqz'
-        }
+        },
+        {
+          title:'Programme 4-sem',
+          description: 'Programme de 4 semaines en pleine conscience',
+          startTime: '16:15:00',
+          endTime: '17:45:00',
+          daysOfWeek: [4],
+          startRecur: '2019-07-01',
+          endRecur: '2019-08-01',
+          url:'https://tinyurl.com/y24jvdzz'
+        },
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
