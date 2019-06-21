@@ -228,7 +228,7 @@
         {
           title: 'Méditation gratuite',
           description: 'Groupe de méditation de pleine conscience gratuit',
-          color: '#28B798',
+          backgroundColor: '#28B798',
           startTime:'18:30:00',
           endTime: '20:00:00',
           daysOfWeek: [5],
@@ -239,7 +239,7 @@
         {
           title: 'Marche / Walk',
           description: 'Marche consciente au Mont Royal / Mindful walk on Mount Royal',
-          color: '#B76628',
+          backgroundColor: '#B76628',
           startTime: '18:00:00',
           endTime: '19:30:00',
           daysOfWeek: [3],
@@ -250,7 +250,7 @@
         {
           title: 'Pleine Conscience 101',
           description: 'Pleine Conscience 101: Atelier d\'introduction à la pleine conscience',
-          color: '#A428B7',
+          backgroundColor: '#A428B7',
           start: '2019-06-11T18:00:00',
           end: '2019-06-11T20:00:00',
           url:'https://tinyurl.com/y64fqsr7'
@@ -258,7 +258,7 @@
         {
           title:'Mindfulness 101',
           description: 'Mindfulness 101: Introductory workshop to mindfulness',
-          color: '#A428B7',
+          backgroundColor: '#A428B7',
           start: '2019-06-13T18:00:00',
           end: '2019-06-13T20:00:00',
           url:'https://tinyurl.com/y3hlp645'
@@ -266,7 +266,7 @@
         {
           title:'Méditation en nature',
           description: 'Groupe de méditation de pleine conscience en nature',
-          color: '#2DB728',
+          backgroundColor: '#2DB728',
           start:'2019-06-15T10:00:00',
           end:'2019-06-15T11:00:00',
           url: 'https://tinyurl.com/yy3byab4'
@@ -274,7 +274,7 @@
         {
           title: 'Introduction FR',
           description: 'Introduction à la pleine conscience',
-          color: '#A428B7',
+          backgroundColor: '#A428B7',
           start: '2019-07-04T11:30:00',
           end: '2019-07-04T12:30:00',
           url:'https://tinyurl.com/y5mabmy2'
@@ -282,7 +282,7 @@
         {
           title:'Méditation guidée',
           description: 'Séance de méditation de pleine conscience',
-          color: '#2840B7',
+          backgroundColor: '#2840B7',
           start: '2019-07-04T12:30:00',
           end: '2019-07-04T13:30:00',
           url:'https://tinyurl.com/yyc538jp'
@@ -290,7 +290,7 @@
         {
           title: 'Introduction EN',
           description: 'Introduction to mindfulness',
-          color: '#A428B7',
+          backgroundColor: '#A428B7',
           start: '2019-07-05T11:30:00',
           end: '2019-07-05T12:30:00',
           url:'https://tinyurl.com/yxtytqyj'
@@ -298,7 +298,7 @@
         {
           title:'Guided meditation',
           description: 'Meditation session to practice mindfulness',
-          color: '#2840B7',
+          backgroundColor: '#2840B7',
           start: '2019-07-05T12:30:00',
           end: '2019-07-05T13:30:00',
           url:'https://tinyurl.com/yy8p6d4g'
@@ -306,7 +306,7 @@
         {
           title:'Méditation au parc',
           description: 'Méditation au parc, pleine conscience en nature',
-          color: '#2DB728',
+          backgroundColor: '#2DB728',
           startTime: '10:30:00',
           endTime: '11:30:00',
           daysOfWeek: [3,4],
@@ -317,7 +317,7 @@
         {
           title:'Programme 4-sem',
           description: 'Programme de 4 semaines en pleine conscience',
-          color: '#B72831',
+          backgroundColor: '#B72831',
           startTime: '16:15:00',
           endTime: '17:45:00',
           daysOfWeek: [4],
@@ -328,7 +328,7 @@
         {
           title:'Méditation au parc',
           description: 'Méditation au parc, pleine conscience en nature',
-          color: '#2DB728',
+          backgroundColor: '#2DB728',
           startTime: '10:30:00',
           endTime: '11:30:00',
           daysOfWeek: [2,3],
@@ -350,8 +350,12 @@
         }
       },
       eventPositioned: function(info) {
-        console.log(info.el);
-        $(info.el).css('background-color', info.event.extendedProps.color);
+        if($(info.el).hasClass("fc-list-item")) {
+          // $(info.el).find(".fc-list-item-title").css("background-color", info.event.extendedProps.color);
+          $(info.el).find(".fc-list-item-title").css("background-color", info.event.backgroundColor);
+        } else {
+          $(info.el).css('background-color', info.event.extendedProps.color);
+        }
 
       }
     }).render();
