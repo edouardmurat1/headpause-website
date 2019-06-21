@@ -26579,6 +26579,16 @@ return Snap;
           endRecur: '2019-08-01',
           url:'https://tinyurl.com/y24jvdzz'
         },
+        {
+          title:'Méditation au parc',
+          description: 'Méditation au parc, pleine conscience en nature',
+          startTime: '10:30:00',
+          endTime: '11:30:00',
+          daysOfWeek: [2,3],
+          startRecur: '2019-07-02',
+          endRecur: '2019-08-01',
+          url:'https://tinyurl.com/y27u9o5c'
+        },
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
