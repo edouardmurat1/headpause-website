@@ -244,7 +244,7 @@
           endTime: '19:30:00',
           daysOfWeek: [3],
           startRecur: '2019-06-05',
-          endRecur: '2019-06-27',
+          endRecur: '2019-06-25',
           url: 'https://tinyurl.com/y2b22dgr'
         },
         {
@@ -335,6 +335,17 @@
           startRecur: '2019-07-02',
           endRecur: '2019-08-01',
           url:'https://tinyurl.com/y27u9o5c'
+        },
+        {
+          title: 'Marche sensorielle',
+          description: 'Marche sensorielle en nature, où l\'on prend conscience de tous nos sens',
+          backgroundColor: '#B76628',
+          startTime: '13:00:00',
+          endTime: '14:30:00',
+          daysOfWeek: [2,3],
+          startRecur: '2019-07-01',
+          endRecur: '2019-08-01',
+          url: 'https://tinyurl.com/y2b22dgr'
         },
       ],
       eventMouseEnter: function (mouseEnterInfo) {
