@@ -26612,6 +26612,28 @@ return Snap;
           endRecur: '2019-08-01',
           url: 'https://tinyurl.com/y2b22dgr'
         },
+        {
+          title: 'Méditation gratuite',
+          description: 'Groupe de méditation de pleine conscience gratuit',
+          backgroundColor: '#28B798',
+          startTime:'18:30:00',
+          endTime: '20:00:00',
+          daysOfWeek: [5],
+          startRecur: '2019-08-01',
+          endRecur: '2019-08-22',
+          url: 'https://tinyurl.com/y6xapa24'
+        },
+        {
+          title: 'Méditation gratuite',
+          description: 'Groupe de méditation de pleine conscience gratuit',
+          backgroundColor: '#28B798',
+          startTime:'18:30:00',
+          endTime: '20:00:00',
+          daysOfWeek: [5],
+          startRecur: '2019-08-24',
+          endRecur: '2019-09-17',
+          url: 'https://tinyurl.com/y6xapa24'
+        },
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
