@@ -26631,9 +26631,20 @@ return Snap;
           endTime: '20:00:00',
           daysOfWeek: [5],
           startRecur: '2019-08-24',
-          endRecur: '2019-09-17',
+          endRecur: '2019-11-23',
           url: 'https://tinyurl.com/y6xapa24'
         },
+        {
+          title: 'Méditation au CCSE',
+          description: 'Groupe de méditation d\'automne du CCSE',
+          backgroundColor: '#2840B7',
+          startTime:'19:45:00',
+          endTime: '20:45:00',
+          daysOfWeek: [4],
+          startRecur: '2019-09-18',
+          endRecur: '2019-10-25',
+          url: 'http://ccse.ca/les-secteurs/adultes-aines/inscriptions/'
+        }
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
