@@ -269,7 +269,7 @@ header.masthead hr {
   margin-bottom: 30px;
 }
 
-header.masthead h1 {
+header h1 {
   font-size: 2rem;
   text-shadow: 2px 2px 10px #000;
 }
@@ -298,13 +298,13 @@ header.mt-5 {
     padding-top: 0;
     padding-bottom: 0;
   }
-  header.masthead h1 {
-    font-size: 3rem;
+  header h1 {
+    font-size: 4rem;
   }
 }
 
 @media (min-width: 1200px) {
-  header.masthead h1 {
+  header h1 {
     font-size: 4rem;
   }
 
