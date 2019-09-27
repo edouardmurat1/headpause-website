@@ -379,7 +379,17 @@
           startRecur: '2019-09-18',
           endRecur: '2019-10-25',
           url: 'http://ccse.ca/les-secteurs/adultes-aines/inscriptions/'
-        }
+        },
+        {
+          title:'Programme 4-sem',
+          description: 'Débutez la méditation en 4 semaines',
+          backgroundColor: '#B72831',
+          startTime: '18:45:00',
+          endTime: '20:15:00',
+          daysOfWeek: [3],
+          startRecur: '2019-10-16',
+          endRecur: '2019-11-06',
+          url: 'https://tinyurl.com/y3tvpbu4'}
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
