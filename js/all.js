@@ -26654,7 +26654,27 @@ return Snap;
           daysOfWeek: [3],
           startRecur: '2019-10-16',
           endRecur: '2019-11-06',
-          url: 'https://tinyurl.com/y3tvpbu4'}
+          url: 'https://tinyurl.com/y3tvpbu4'
+        },
+        {
+          title:'Cours en ligne *Rabais*',
+          description: 'Atelier d\'introduction à la pleine conscience, en ligne',
+          backgroundColor: '#691A75',
+          start: '2019-10-08T19:00:00',
+          end: '2019-10-08T20:00:00',
+          url:'https://www.eventbrite.com/e/pleine-conscience-101-en-ligne-tickets-75052817999'
+        },
+        {
+          title:'Cours en ligne',
+          description: 'Atelier d\'introduction à la pleine conscience, en ligne',
+          backgroundColor: '#A428B7',
+          startTime: '19:00:00',
+          endTime: '20:00:00',
+          daysOfWeek: [2],
+          startRecur: '2019-10-09',
+          endRecur: '2019-11-13',
+          url: 'https://www.eventbrite.com/e/pleine-conscience-101-en-ligne-tickets-75057951353'
+        },
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
