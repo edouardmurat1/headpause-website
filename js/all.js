@@ -26653,7 +26653,7 @@ return Snap;
           endTime: '20:15:00',
           daysOfWeek: [3],
           startRecur: '2019-10-16',
-          endRecur: '2019-11-06',
+          endRecur: '2019-11-07',
           url: 'https://tinyurl.com/y3tvpbu4'
         },
         {
