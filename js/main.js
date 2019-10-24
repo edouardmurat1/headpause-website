@@ -39,6 +39,37 @@
     $('.navbar-collapse').collapse('hide');
   });
 
+  if(window.location.href.indexOf('#registrationModal') != -1) {
+    $('#registrationModal').modal('show');
+    $('#carouselExampleIndicators').carousel('pause');
+  }
+
+  $('#registrationModal select').on('change', function (e) {
+      var nbRegistration = $("#registrationModal option:selected").text();
+      $('#registrationModal input[name=_next]').val($('#registrationModal input[name=_next]').val() + "&nbRegistration=" + nbRegistration);
+  });
+
+  var getHashValue = function(key) {
+    var matches = location.hash.match(new RegExp(key+'=([^&]*)'));
+    return matches ? matches[1] : null;
+  }
+
+  if(window.location.href.indexOf('#confirmationModal') != -1) {
+    $('#confirmationModal').modal('show');
+
+    $.get("https://api.myjson.com/bins/19n0uq", function(data, textStatus, jqXHR) {
+      var newNb = parseInt(data.nbRegistered, 10) + parseInt(getHashValue('nbRegistration'), 10)
+      $.ajax({
+        url:"https://api.myjson.com/bins/19n0uq",
+        type:"PUT",
+        data:'{"nbRegistered":"' + newNb + '"}',
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+        success: function(data, textStatus, jqXHR){
+        }
+      });
+    });
+  }
   // Activate scrollspy to add active class to navbar items on scroll
   $('body').scrollspy({
     target: '#mainNav',
@@ -359,7 +390,7 @@
           url: 'https://tinyurl.com/y6xapa24'
         },
         {
-          title: 'Méditation gratuite',
+          title: 'Méditation *Gratuite*',
           description: 'Groupe de méditation de pleine conscience gratuit',
           backgroundColor: '#28B798',
           startTime:'18:30:00',
@@ -410,6 +441,25 @@
           endRecur: '2019-11-13',
           url: 'https://www.eventbrite.com/e/pleine-conscience-101-en-ligne-tickets-75057951353'
         },
+        {
+          title:'Méditation du matin *Gratuite*',
+          description: 'Séance de méditation en début de journée',
+          backgroundColor: '#2DB728',
+          start: '2019-10-29T08:30:00',
+          end: '2019-10-29T09:15:00',
+          url:'#registrationModal'
+        },
+        {
+          title:'Méditation du matin',
+          description: 'Séance de méditation en début de journée',
+          backgroundColor: '#56c552',
+          startTime: '8:30:00',
+          endTime: '9:00:00',
+          daysOfWeek: [2],
+          startRecur: '2019-11-05',
+          endRecur: '2019-12-11',
+          url: 'https://www.eventbrite.com/e/pleine-conscience-101-en-ligne-tickets-75057951353'
+        }
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({

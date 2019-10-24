@@ -9318,6 +9318,12 @@ header.mt-5 {
   background-color: #FF6232!important;
 }
 
+.btn-xl {
+    font-size: 34px;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
 @keyframes flower {
     from {
       transform: scale(.9,.9);
