@@ -26666,7 +26666,7 @@ return Snap;
         },
         {
           title:'Cours en ligne',
-          description: 'Atelier d\'introduction à la pleine conscience, en ligne',
+          description: 'Méditation Pleine Conscience, en ligne',
           backgroundColor: '#A428B7',
           startTime: '19:00:00',
           endTime: '20:00:00',
@@ -26704,7 +26704,18 @@ return Snap;
           startRecur: '2019-11-05',
           endRecur: '2019-11-13',
           url: 'https://www.eventbrite.com/e/morning-meditation-tickets-79748755675'
-        }
+        },
+        {
+          title:'Cours en ligne',
+          description: 'Méditation Pleine Conscience, en ligne',
+          backgroundColor: '#A428B7',
+          startTime: '19:00:00',
+          endTime: '20:00:00',
+          daysOfWeek: [2],
+          startRecur: '2019-11-25',
+          endRecur: '2019-12-18',
+          url: 'https://www.eventbrite.com/e/pleine-conscience-101-en-ligne-tickets-75057951353'
+        },
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
