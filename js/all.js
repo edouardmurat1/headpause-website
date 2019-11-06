@@ -26632,7 +26632,7 @@ return Snap;
           daysOfWeek: [5],
           startRecur: '2019-08-24',
           endRecur: '2019-11-23',
-          url: 'https://tinyurl.com/y6xapa24'
+          url: 'https://www.eventbrite.com/e/meditation-de-pleine-conscience-gratuite-avec-headpause-tickets-80533974285'
         },
         {
           title: 'Méditation au CCSE',
@@ -26691,7 +26691,7 @@ return Snap;
           endTime: '9:00:00',
           daysOfWeek: [2],
           startRecur: '2019-11-05',
-          endRecur: '2019-11-13',
+          endRecur: '2019-11-07',
           url: 'https://www.eventbrite.com/e/morning-meditation-tickets-79748755675'
         },
         {
@@ -26702,7 +26702,7 @@ return Snap;
           endTime: '9:30:00',
           daysOfWeek: [2],
           startRecur: '2019-11-05',
-          endRecur: '2019-11-13',
+          endRecur: '2019-11-07',
           url: 'https://www.eventbrite.com/e/morning-meditation-tickets-79748755675'
         },
         {

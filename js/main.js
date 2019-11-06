@@ -426,7 +426,7 @@
           endTime: '9:00:00',
           daysOfWeek: [2],
           startRecur: '2019-11-05',
-          endRecur: '2019-11-13',
+          endRecur: '2019-11-07',
           url: 'https://www.eventbrite.com/e/morning-meditation-tickets-79748755675'
         },
         {
@@ -437,7 +437,7 @@
           endTime: '9:30:00',
           daysOfWeek: [2],
           startRecur: '2019-11-05',
-          endRecur: '2019-11-13',
+          endRecur: '2019-11-07',
           url: 'https://www.eventbrite.com/e/morning-meditation-tickets-79748755675'
         },
         {
