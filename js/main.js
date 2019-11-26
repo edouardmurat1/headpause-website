@@ -451,6 +451,17 @@
           endRecur: '2019-12-18',
           url: 'https://www.eventbrite.com/e/pleine-conscience-101-en-ligne-tickets-75057951353'
         },
+        {
+          title: 'Méditation *Gratuite*',
+          description: 'Groupe de méditation de pleine conscience gratuit',
+          backgroundColor: '#28B798',
+          startTime:'18:30:00',
+          endTime: '20:00:00',
+          daysOfWeek: [5],
+          startRecur: '2019-12-5',
+          endRecur: '2019-12-14',
+          url: 'https://www.eventbrite.com/e/meditation-de-pleine-conscience-gratuite-avec-headpause-tickets-83923352005'
+        }
       ],
       eventMouseEnter: function (mouseEnterInfo) {
         $(mouseEnterInfo.el).tooltip({
