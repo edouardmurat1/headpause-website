@@ -461,6 +461,17 @@
           startRecur: '2019-12-5',
           endRecur: '2019-12-14',
           url: 'https://www.eventbrite.com/e/meditation-de-pleine-conscience-gratuite-avec-headpause-tickets-83923352005'
+        },
+        {
+          title: 'Méditation *Gratuite*',
+          description: 'Cliquez pour plus de détails',
+          backgroundColor: '#28B798',
+          startTime:'18:30:00',
+          endTime: '20:00:00',
+          daysOfWeek: [5],
+          startRecur: '2020-01-24',
+          endRecur: '2020-03-27',
+          url: 'https://www.eventbrite.com/e/meditation-de-pleine-conscience-tickets-91090892311'
         }
       ],
       eventMouseEnter: function (mouseEnterInfo) {
